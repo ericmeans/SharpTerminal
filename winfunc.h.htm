@@ -1,0 +1,1166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<META NAME="GENERATOR" CONTENT="lxr-1998-06-10: http://lxr.linux.no">
+<title>ROOT/cint/lib/win32api/winfunc.h</title>
+</head>
+
+<BODY   BGCOLOR="#FFFFFF" TEXT="#000000"
+	LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE BORDER=0 CELLPADDING=12 CELLSPACING=0 WIDTH="100%">
+ <TR>
+  <TD ALIGN=LEFT VALIGN=CENTER>
+   <NOBR><FONT SIZE="+2"><B>
+    <A HREF="">ROOT Cross Reference:</A>
+   </B></FONT></NOBR><I></I>
+   <BR><B><a href="/lxr/source/">ROOT</a>/ <a href="/lxr/source/cint/">cint</a>/ <a href="/lxr/source/cint/lib/">lib</a>/ <a href="/lxr/source/cint/lib/win32api/">win32api</a>/ <a href="/lxr/source/cint/lib/win32api/winfunc.h">winfunc.h</a> </B>
+  </TD>
+
+  <TD ALIGN=RIGHT VALIGN=TOP WIDTH="1%">
+   <TABLE BORDER CELLPADDING=12 CELLSPACING=0>
+    <TR>
+     <TD NOWRAP BGCOLOR="#FAFAFA">
+      <A HREF="http://root.cern.ch/bonsai/cvslog.cgi?file=root/cint/lib/win32api/winfunc.h">CVS Log</A><BR>
+      <A HREF="http://root.cern.ch/bonsai/cvsblame.cgi?file=root/cint/lib/win32api/winfunc.h">CVS Blame</A><BR>
+      <BR>
+     </TD>
+    </TR>
+   </TABLE>
+  </TD>
+
+  <TD ALIGN=RIGHT VALIGN=TOP WIDTH="1%">
+   <TABLE BORDER CELLPADDING=6 CELLSPACING=0>
+    <TR>
+     <TD BGCOLOR="#FAFAFA">
+      <TABLE BORDER=0 CELLPADDING=6 CELLSPACING=0>
+       <TR>
+        <TD NOWRAP ALIGN=LEFT>
+         changes to<BR>this file in<BR>the last:
+        </TD>
+        <TD NOWRAP>
+         <A HREF="http://root.cern.ch/bonsai/cvsquery.cgi?branch=HEAD&file=root/cint/lib/win32api/winfunc.h&date=day">day</A><BR>
+         <A HREF="http://root.cern.ch/bonsai/cvsquery.cgi?branch=HEAD&file=root/cint/lib/win32api/winfunc.h&date=week">week</A><BR>
+         <A HREF="http://root.cern.ch/bonsai/cvsquery.cgi?branch=HEAD&file=root/cint/lib/win32api/winfunc.h&date=month">month</A><BR>
+        </TD>
+       </TR>
+      </TABLE>
+     </TD>
+    </TR>
+   </TABLE>
+  </TD>
+
+ </TR>
+</TABLE>
+<pre>  <a name=1 href="/lxr/source/cint/lib/win32api/winfunc.h#1">1</a> <b><i>/* /% C %/ */</i></b>
+  <a name=2 href="/lxr/source/cint/lib/win32api/winfunc.h#2">2</a> <b><i>/***********************************************************************</i></b>
+  <a name=3 href="/lxr/source/cint/lib/win32api/winfunc.h#3">3</a> <b><i> * cint (C/C++ interpreter)</i></b>
+  <a name=4 href="/lxr/source/cint/lib/win32api/winfunc.h#4">4</a> <b><i> ************************************************************************</i></b>
+  <a name=5 href="/lxr/source/cint/lib/win32api/winfunc.h#5">5</a> <b><i> * Header file lib/win32api/winfunc.h</i></b>
+  <a name=6 href="/lxr/source/cint/lib/win32api/winfunc.h#6">6</a> <b><i> ************************************************************************</i></b>
+  <a name=7 href="/lxr/source/cint/lib/win32api/winfunc.h#7">7</a> <b><i> * Description:</i></b>
+  <a name=8 href="/lxr/source/cint/lib/win32api/winfunc.h#8">8</a> <b><i> *  Create WIN32 API function interface</i></b>
+  <a name=9 href="/lxr/source/cint/lib/win32api/winfunc.h#9">9</a> <b><i> ************************************************************************</i></b>
+ <a name=10 href="/lxr/source/cint/lib/win32api/winfunc.h#10">10</a> <b><i> * Copyright(c) 1995~2001  Masaharu Goto (MXJ02154@niftyserve.or.jp)</i></b>
+ <a name=11 href="/lxr/source/cint/lib/win32api/winfunc.h#11">11</a> <b><i> *</i></b>
+ <a name=12 href="/lxr/source/cint/lib/win32api/winfunc.h#12">12</a> <b><i> * Permission to use, copy, modify and distribute this software and its </i></b>
+ <a name=13 href="/lxr/source/cint/lib/win32api/winfunc.h#13">13</a> <b><i> * documentation for any purpose is hereby granted without fee,</i></b>
+ <a name=14 href="/lxr/source/cint/lib/win32api/winfunc.h#14">14</a> <b><i> * provided that the above copyright notice appear in all copies and</i></b>
+ <a name=15 href="/lxr/source/cint/lib/win32api/winfunc.h#15">15</a> <b><i> * that both that copyright notice and this permission notice appear</i></b>
+ <a name=16 href="/lxr/source/cint/lib/win32api/winfunc.h#16">16</a> <b><i> * in supporting documentation.  The author makes no</i></b>
+ <a name=17 href="/lxr/source/cint/lib/win32api/winfunc.h#17">17</a> <b><i> * representations about the suitability of this software for any</i></b>
+ <a name=18 href="/lxr/source/cint/lib/win32api/winfunc.h#18">18</a> <b><i> * purpose.  It is provided "as is" without express or implied warranty.</i></b>
+ <a name=19 href="/lxr/source/cint/lib/win32api/winfunc.h#19">19</a> <b><i> ************************************************************************/</i></b>
+ <a name=20 href="/lxr/source/cint/lib/win32api/winfunc.h#20">20</a> 
+ <a name=21 href="/lxr/source/cint/lib/win32api/winfunc.h#21">21</a> <b><i>/***********************************************************************</i></b>
+ <a name=22 href="/lxr/source/cint/lib/win32api/winfunc.h#22">22</a> <b><i>* Author's Personal note</i></b>
+ <a name=23 href="/lxr/source/cint/lib/win32api/winfunc.h#23">23</a> <b><i>*  Check out for WinInet.h  Ftp* functions</i></b>
+ <a name=24 href="/lxr/source/cint/lib/win32api/winfunc.h#24">24</a> <b><i>***********************************************************************/</i></b>
+ <a name=25 href="/lxr/source/cint/lib/win32api/winfunc.h#25">25</a> 
+ <a name=26 href="/lxr/source/cint/lib/win32api/winfunc.h#26">26</a> 
+ <a name=27 href="/lxr/source/cint/lib/win32api/winfunc.h#27">27</a> #ifndef <a href="/lxr/ident?i=G__WINFUNC_H">G__WINFUNC_H</a>
+ <a name=28 href="/lxr/source/cint/lib/win32api/winfunc.h#28">28</a> #define <a href="/lxr/ident?i=G__WINFUNC_H">G__WINFUNC_H</a>
+ <a name=29 href="/lxr/source/cint/lib/win32api/winfunc.h#29">29</a> 
+ <a name=30 href="/lxr/source/cint/lib/win32api/winfunc.h#30">30</a> #ifdef __MAKECINT__
+ <a name=31 href="/lxr/source/cint/lib/win32api/winfunc.h#31">31</a> 
+ <a name=32 href="/lxr/source/cint/lib/win32api/winfunc.h#32">32</a> #pragma <a href="/lxr/ident?i=link">link</a> off all functions;
+ <a name=33 href="/lxr/source/cint/lib/win32api/winfunc.h#33">33</a> #pragma <a href="/lxr/ident?i=link">link</a> off all classes;
+ <a name=34 href="/lxr/source/cint/lib/win32api/winfunc.h#34">34</a> #pragma <a href="/lxr/ident?i=link">link</a> off all globals;
+ <a name=35 href="/lxr/source/cint/lib/win32api/winfunc.h#35">35</a> #pragma <a href="/lxr/ident?i=link">link</a> off all typedefs;
+ <a name=36 href="/lxr/source/cint/lib/win32api/winfunc.h#36">36</a> 
+ <a name=37 href="/lxr/source/cint/lib/win32api/winfunc.h#37">37</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=global">global</a> <a href="/lxr/ident?i=G__WINFUNC_H">G__WINFUNC_H</a>;
+ <a name=38 href="/lxr/source/cint/lib/win32api/winfunc.h#38">38</a> 
+ <a name=39 href="/lxr/source/cint/lib/win32api/winfunc.h#39">39</a> <b><i>/***********************************************************************</i></b>
+ <a name=40 href="/lxr/source/cint/lib/win32api/winfunc.h#40">40</a> <b><i>* Types</i></b>
+ <a name=41 href="/lxr/source/cint/lib/win32api/winfunc.h#41">41</a> <b><i>***********************************************************************/</i></b>
+ <a name=42 href="/lxr/source/cint/lib/win32api/winfunc.h#42">42</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class tagFILETIME;
+ <a name=43 href="/lxr/source/cint/lib/win32api/winfunc.h#43">43</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _FILETIME;
+ <a name=44 href="/lxr/source/cint/lib/win32api/winfunc.h#44">44</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef FILETIME;
+ <a name=45 href="/lxr/source/cint/lib/win32api/winfunc.h#45">45</a> 
+ <a name=46 href="/lxr/source/cint/lib/win32api/winfunc.h#46">46</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _SYSTEMTIME;
+ <a name=47 href="/lxr/source/cint/lib/win32api/winfunc.h#47">47</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef SYSTEMTIME;
+ <a name=48 href="/lxr/source/cint/lib/win32api/winfunc.h#48">48</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef PSYSTEMTIME;
+ <a name=49 href="/lxr/source/cint/lib/win32api/winfunc.h#49">49</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPSYSTEMTIME;
+ <a name=50 href="/lxr/source/cint/lib/win32api/winfunc.h#50">50</a> 
+ <a name=51 href="/lxr/source/cint/lib/win32api/winfunc.h#51">51</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _TIME_ZONE_INFORMATION;
+ <a name=52 href="/lxr/source/cint/lib/win32api/winfunc.h#52">52</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef TIME_ZONE_INFORMATION;
+ <a name=53 href="/lxr/source/cint/lib/win32api/winfunc.h#53">53</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef PTIME_ZONE_INFORMATION;
+ <a name=54 href="/lxr/source/cint/lib/win32api/winfunc.h#54">54</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPTIME_ZONE_INFORMATION;
+ <a name=55 href="/lxr/source/cint/lib/win32api/winfunc.h#55">55</a> 
+ <a name=56 href="/lxr/source/cint/lib/win32api/winfunc.h#56">56</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _COMMTIMEOUTS;
+ <a name=57 href="/lxr/source/cint/lib/win32api/winfunc.h#57">57</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef COMMTIMEOUTS;
+ <a name=58 href="/lxr/source/cint/lib/win32api/winfunc.h#58">58</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPCOMMTIMEOUTS;
+ <a name=59 href="/lxr/source/cint/lib/win32api/winfunc.h#59">59</a> 
+ <a name=60 href="/lxr/source/cint/lib/win32api/winfunc.h#60">60</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _DCB;
+ <a name=61 href="/lxr/source/cint/lib/win32api/winfunc.h#61">61</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef DCB;
+ <a name=62 href="/lxr/source/cint/lib/win32api/winfunc.h#62">62</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPDCB;
+ <a name=63 href="/lxr/source/cint/lib/win32api/winfunc.h#63">63</a> 
+ <a name=64 href="/lxr/source/cint/lib/win32api/winfunc.h#64">64</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _OVERLAPPED;
+ <a name=65 href="/lxr/source/cint/lib/win32api/winfunc.h#65">65</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef OVERLAPPED;
+ <a name=66 href="/lxr/source/cint/lib/win32api/winfunc.h#66">66</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPOVERLAPPED;
+ <a name=67 href="/lxr/source/cint/lib/win32api/winfunc.h#67">67</a> 
+ <a name=68 href="/lxr/source/cint/lib/win32api/winfunc.h#68">68</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _WIN32_FIND_DATA;
+ <a name=69 href="/lxr/source/cint/lib/win32api/winfunc.h#69">69</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _WIN32_FIND_DATAA;
+ <a name=70 href="/lxr/source/cint/lib/win32api/winfunc.h#70">70</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _WIN32_FIND_DATAW;
+ <a name=71 href="/lxr/source/cint/lib/win32api/winfunc.h#71">71</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=WIN32_FIND_DATA">WIN32_FIND_DATA</a>;
+ <a name=72 href="/lxr/source/cint/lib/win32api/winfunc.h#72">72</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPWIN32_FIND_DATA;
+ <a name=73 href="/lxr/source/cint/lib/win32api/winfunc.h#73">73</a> 
+ <a name=74 href="/lxr/source/cint/lib/win32api/winfunc.h#74">74</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class _SECURITY_ATTRIBUTES;
+ <a name=75 href="/lxr/source/cint/lib/win32api/winfunc.h#75">75</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef SECURITY_ATTRIBUTES;
+ <a name=76 href="/lxr/source/cint/lib/win32api/winfunc.h#76">76</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPSECURITY_ATTRIBUTES;
+ <a name=77 href="/lxr/source/cint/lib/win32api/winfunc.h#77">77</a> 
+ <a name=78 href="/lxr/source/cint/lib/win32api/winfunc.h#78">78</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef PTHREAD_START_ROUTINE;
+ <a name=79 href="/lxr/source/cint/lib/win32api/winfunc.h#79">79</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPTHREAD_START_ROUTINE;
+ <a name=80 href="/lxr/source/cint/lib/win32api/winfunc.h#80">80</a> 
+ <a name=81 href="/lxr/source/cint/lib/win32api/winfunc.h#81">81</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class RTL_CRITICAL_SECTION;
+ <a name=82 href="/lxr/source/cint/lib/win32api/winfunc.h#82">82</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef CRITICAL_SECTION;
+ <a name=83 href="/lxr/source/cint/lib/win32api/winfunc.h#83">83</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=LPCRITICAL_SECTION">LPCRITICAL_SECTION</a>;
+ <a name=84 href="/lxr/source/cint/lib/win32api/winfunc.h#84">84</a> 
+ <a name=85 href="/lxr/source/cint/lib/win32api/winfunc.h#85">85</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=LPCHOOSECOLOR">LPCHOOSECOLOR</a>;
+ <a name=86 href="/lxr/source/cint/lib/win32api/winfunc.h#86">86</a> 
+ <a name=87 href="/lxr/source/cint/lib/win32api/winfunc.h#87">87</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=LPCHOOSEFONT">LPCHOOSEFONT</a>;
+ <a name=88 href="/lxr/source/cint/lib/win32api/winfunc.h#88">88</a> 
+ <a name=89 href="/lxr/source/cint/lib/win32api/winfunc.h#89">89</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=LPPAGESETUPDLG">LPPAGESETUPDLG</a>;
+ <a name=90 href="/lxr/source/cint/lib/win32api/winfunc.h#90">90</a> 
+ <a name=91 href="/lxr/source/cint/lib/win32api/winfunc.h#91">91</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=LPPRINTDLG">LPPRINTDLG</a>;
+ <a name=92 href="/lxr/source/cint/lib/win32api/winfunc.h#92">92</a> 
+ <a name=93 href="/lxr/source/cint/lib/win32api/winfunc.h#93">93</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=LPFINDREPLACE">LPFINDREPLACE</a>;
+ <a name=94 href="/lxr/source/cint/lib/win32api/winfunc.h#94">94</a> 
+ <a name=95 href="/lxr/source/cint/lib/win32api/winfunc.h#95">95</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPOVERLAPPED_COMPLETION_ROUTINE;
+ <a name=96 href="/lxr/source/cint/lib/win32api/winfunc.h#96">96</a> 
+ <a name=97 href="/lxr/source/cint/lib/win32api/winfunc.h#97">97</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=BOOL">BOOL</a>;
+ <a name=98 href="/lxr/source/cint/lib/win32api/winfunc.h#98">98</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef BOOLEAN;
+ <a name=99 href="/lxr/source/cint/lib/win32api/winfunc.h#99">99</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef BYTE;
+<a name=100 href="/lxr/source/cint/lib/win32api/winfunc.h#100">100</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=DWORD">DWORD</a>;
+<a name=101 href="/lxr/source/cint/lib/win32api/winfunc.h#101">101</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=WORD">WORD</a>;
+<a name=102 href="/lxr/source/cint/lib/win32api/winfunc.h#102">102</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=HANDLE">HANDLE</a>;
+<a name=103 href="/lxr/source/cint/lib/win32api/winfunc.h#103">103</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=HINSTANCE">HINSTANCE</a>;
+<a name=104 href="/lxr/source/cint/lib/win32api/winfunc.h#104">104</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPCVOID;
+<a name=105 href="/lxr/source/cint/lib/win32api/winfunc.h#105">105</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef UCHAR;
+<a name=106 href="/lxr/source/cint/lib/win32api/winfunc.h#106">106</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef USHORT;
+<a name=107 href="/lxr/source/cint/lib/win32api/winfunc.h#107">107</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=UINT">UINT</a>;
+<a name=108 href="/lxr/source/cint/lib/win32api/winfunc.h#108">108</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef ULONG;
+<a name=109 href="/lxr/source/cint/lib/win32api/winfunc.h#109">109</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef HMODULE;
+<a name=110 href="/lxr/source/cint/lib/win32api/winfunc.h#110">110</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LARGE_INTEGER;
+<a name=111 href="/lxr/source/cint/lib/win32api/winfunc.h#111">111</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef PVOID;
+<a name=112 href="/lxr/source/cint/lib/win32api/winfunc.h#112">112</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=WCHAR">WCHAR</a>;
+<a name=113 href="/lxr/source/cint/lib/win32api/winfunc.h#113">113</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=DWORDLONG">DWORDLONG</a>;
+<a name=114 href="/lxr/source/cint/lib/win32api/winfunc.h#114">114</a> typedef <a href="/lxr/ident?i=LONG">LONG</a> <a href="/lxr/ident?i=LRESULT">LRESULT</a>;
+<a name=115 href="/lxr/source/cint/lib/win32api/winfunc.h#115">115</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=LRESULT">LRESULT</a>;
+<a name=116 href="/lxr/source/cint/lib/win32api/winfunc.h#116">116</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef WPARAM;
+<a name=117 href="/lxr/source/cint/lib/win32api/winfunc.h#117">117</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef LPARAM;
+<a name=118 href="/lxr/source/cint/lib/win32api/winfunc.h#118">118</a> 
+<a name=119 href="/lxr/source/cint/lib/win32api/winfunc.h#119">119</a> 
+<a name=120 href="/lxr/source/cint/lib/win32api/winfunc.h#120">120</a> <b><i>/***********************************************************************</i></b>
+<a name=121 href="/lxr/source/cint/lib/win32api/winfunc.h#121">121</a> <b><i>* Constants</i></b>
+<a name=122 href="/lxr/source/cint/lib/win32api/winfunc.h#122">122</a> <b><i>***********************************************************************/</i></b>
+<a name=123 href="/lxr/source/cint/lib/win32api/winfunc.h#123">123</a> #define <a href="/lxr/ident?i=GENERIC_READ">GENERIC_READ</a>                (0x80000000) <b><i>/* from WINNT.H */</i></b>
+<a name=124 href="/lxr/source/cint/lib/win32api/winfunc.h#124">124</a> #define <a href="/lxr/ident?i=GENERIC_WRITE">GENERIC_WRITE</a>               (0x40000000) <b><i>/* from WINNT.H */</i></b>
+<a name=125 href="/lxr/source/cint/lib/win32api/winfunc.h#125">125</a> #define <a href="/lxr/ident?i=FILE_SHARE_READ">FILE_SHARE_READ</a>             (0x00000001) <b><i>/* from WINNT.H */</i></b>
+<a name=126 href="/lxr/source/cint/lib/win32api/winfunc.h#126">126</a> #define <a href="/lxr/ident?i=FILE_SHARE_WRITE">FILE_SHARE_WRITE</a>            (0x00000002) <b><i>/* from WINNT.H */</i></b>
+<a name=127 href="/lxr/source/cint/lib/win32api/winfunc.h#127">127</a> #define <a href="/lxr/ident?i=FILE_FLAG_SEQUENTIAL_SCAN">FILE_FLAG_SEQUENTIAL_SCAN</a>   0x08000000
+<a name=128 href="/lxr/source/cint/lib/win32api/winfunc.h#128">128</a> #define <a href="/lxr/ident?i=CREATE_NEW">CREATE_NEW</a>          1
+<a name=129 href="/lxr/source/cint/lib/win32api/winfunc.h#129">129</a> #define <a href="/lxr/ident?i=CREATE_ALWAYS">CREATE_ALWAYS</a>       2
+<a name=130 href="/lxr/source/cint/lib/win32api/winfunc.h#130">130</a> #define <a href="/lxr/ident?i=OPEN_EXISTING">OPEN_EXISTING</a>       3
+<a name=131 href="/lxr/source/cint/lib/win32api/winfunc.h#131">131</a> #define <a href="/lxr/ident?i=OPEN_ALWAYS">OPEN_ALWAYS</a>         4
+<a name=132 href="/lxr/source/cint/lib/win32api/winfunc.h#132">132</a> #define <a href="/lxr/ident?i=TRUNCATE_EXISTING">TRUNCATE_EXISTING</a>   5
+<a name=133 href="/lxr/source/cint/lib/win32api/winfunc.h#133">133</a> 
+<a name=134 href="/lxr/source/cint/lib/win32api/winfunc.h#134">134</a> #ifndef _MAC
+<a name=135 href="/lxr/source/cint/lib/win32api/winfunc.h#135">135</a> #define <a href="/lxr/ident?i=INVALID_HANDLE_VALUE">INVALID_HANDLE_VALUE</a>        ((<a href="/lxr/ident?i=HANDLE">HANDLE</a>)(-1))
+<a name=136 href="/lxr/source/cint/lib/win32api/winfunc.h#136">136</a> #define <a href="/lxr/ident?i=DELETE">DELETE</a>                      0x00010000L
+<a name=137 href="/lxr/source/cint/lib/win32api/winfunc.h#137">137</a> 
+<a name=138 href="/lxr/source/cint/lib/win32api/winfunc.h#138">138</a> #define <a href="/lxr/ident?i=FILE_BEGIN">FILE_BEGIN</a>                  0
+<a name=139 href="/lxr/source/cint/lib/win32api/winfunc.h#139">139</a> #define <a href="/lxr/ident?i=FILE_CURRENT">FILE_CURRENT</a>                1
+<a name=140 href="/lxr/source/cint/lib/win32api/winfunc.h#140">140</a> #define <a href="/lxr/ident?i=FILE_END">FILE_END</a>                    2
+<a name=141 href="/lxr/source/cint/lib/win32api/winfunc.h#141">141</a> #endif
+<a name=142 href="/lxr/source/cint/lib/win32api/winfunc.h#142">142</a> 
+<a name=143 href="/lxr/source/cint/lib/win32api/winfunc.h#143">143</a> #define <a href="/lxr/ident?i=FILE_ATTRIBUTE_READONLY">FILE_ATTRIBUTE_READONLY</a>         0x00000001
+<a name=144 href="/lxr/source/cint/lib/win32api/winfunc.h#144">144</a> #define <a href="/lxr/ident?i=FILE_ATTRIBUTE_HIDDEN">FILE_ATTRIBUTE_HIDDEN</a>           0x00000002
+<a name=145 href="/lxr/source/cint/lib/win32api/winfunc.h#145">145</a> #define <a href="/lxr/ident?i=FILE_ATTRIBUTE_SYSTEM">FILE_ATTRIBUTE_SYSTEM</a>           0x00000004
+<a name=146 href="/lxr/source/cint/lib/win32api/winfunc.h#146">146</a> #define <a href="/lxr/ident?i=FILE_ATTRIBUTE_DIRECTORY">FILE_ATTRIBUTE_DIRECTORY</a>        0x00000010
+<a name=147 href="/lxr/source/cint/lib/win32api/winfunc.h#147">147</a> #define <a href="/lxr/ident?i=FILE_ATTRIBUTE_ARCHIVE">FILE_ATTRIBUTE_ARCHIVE</a>          0x00000020
+<a name=148 href="/lxr/source/cint/lib/win32api/winfunc.h#148">148</a> #define <a href="/lxr/ident?i=FILE_ATTRIBUTE_NORMAL">FILE_ATTRIBUTE_NORMAL</a>           0x00000080
+<a name=149 href="/lxr/source/cint/lib/win32api/winfunc.h#149">149</a> #define <a href="/lxr/ident?i=FILE_ATTRIBUTE_TEMPORARY">FILE_ATTRIBUTE_TEMPORARY</a>        0x00000100
+<a name=150 href="/lxr/source/cint/lib/win32api/winfunc.h#150">150</a> 
+<a name=151 href="/lxr/source/cint/lib/win32api/winfunc.h#151">151</a> #define <a href="/lxr/ident?i=FILE_FLAG_WRITE_THROUGH">FILE_FLAG_WRITE_THROUGH</a>     0x80000000
+<a name=152 href="/lxr/source/cint/lib/win32api/winfunc.h#152">152</a> #define <a href="/lxr/ident?i=FILE_FLAG_RANDOM_ACCESS">FILE_FLAG_RANDOM_ACCESS</a>     0x10000000
+<a name=153 href="/lxr/source/cint/lib/win32api/winfunc.h#153">153</a> 
+<a name=154 href="/lxr/source/cint/lib/win32api/winfunc.h#154">154</a> #define <a href="/lxr/ident?i=TIME_ZONE_ID_INVALID">TIME_ZONE_ID_INVALID</a>        0xFFFFFFFF
+<a name=155 href="/lxr/source/cint/lib/win32api/winfunc.h#155">155</a> #define <a href="/lxr/ident?i=TIME_ZONE_ID_UNKNOWN">TIME_ZONE_ID_UNKNOWN</a>        0
+<a name=156 href="/lxr/source/cint/lib/win32api/winfunc.h#156">156</a> #define <a href="/lxr/ident?i=TIME_ZONE_ID_STANDARD">TIME_ZONE_ID_STANDARD</a>       1
+<a name=157 href="/lxr/source/cint/lib/win32api/winfunc.h#157">157</a> #define <a href="/lxr/ident?i=TIME_ZONE_ID_DAYLIGHT">TIME_ZONE_ID_DAYLIGHT</a>       2
+<a name=158 href="/lxr/source/cint/lib/win32api/winfunc.h#158">158</a> 
+<a name=159 href="/lxr/source/cint/lib/win32api/winfunc.h#159">159</a> #define <a href="/lxr/ident?i=INVALID_HANDLE_VALUE">INVALID_HANDLE_VALUE</a> (<a href="/lxr/ident?i=HANDLE">HANDLE</a>)-1
+<a name=160 href="/lxr/source/cint/lib/win32api/winfunc.h#160">160</a> #define <a href="/lxr/ident?i=INVALID_FILE_SIZE">INVALID_FILE_SIZE</a> (<a href="/lxr/ident?i=DWORD">DWORD</a>)0xFFFFFFFF
+<a name=161 href="/lxr/source/cint/lib/win32api/winfunc.h#161">161</a> 
+<a name=162 href="/lxr/source/cint/lib/win32api/winfunc.h#162">162</a> #define <a href="/lxr/ident?i=FILE_BEGIN">FILE_BEGIN</a>           0
+<a name=163 href="/lxr/source/cint/lib/win32api/winfunc.h#163">163</a> #define <a href="/lxr/ident?i=FILE_CURRENT">FILE_CURRENT</a>         1
+<a name=164 href="/lxr/source/cint/lib/win32api/winfunc.h#164">164</a> #define <a href="/lxr/ident?i=FILE_END">FILE_END</a>             2
+<a name=165 href="/lxr/source/cint/lib/win32api/winfunc.h#165">165</a> 
+<a name=166 href="/lxr/source/cint/lib/win32api/winfunc.h#166">166</a> #define <a href="/lxr/ident?i=TIME_ZONE_ID_INVALID">TIME_ZONE_ID_INVALID</a> (<a href="/lxr/ident?i=DWORD">DWORD</a>)0xFFFFFFFF
+<a name=167 href="/lxr/source/cint/lib/win32api/winfunc.h#167">167</a> 
+<a name=168 href="/lxr/source/cint/lib/win32api/winfunc.h#168">168</a> #define <a href="/lxr/ident?i=WAIT_FAILED">WAIT_FAILED</a> (<a href="/lxr/ident?i=DWORD">DWORD</a>)0xFFFFFFFF
+<a name=169 href="/lxr/source/cint/lib/win32api/winfunc.h#169">169</a> 
+<a name=170 href="/lxr/source/cint/lib/win32api/winfunc.h#170">170</a> #define <a href="/lxr/ident?i=DRIVE_UNKNOWN">DRIVE_UNKNOWN</a>     0
+<a name=171 href="/lxr/source/cint/lib/win32api/winfunc.h#171">171</a> #define <a href="/lxr/ident?i=DRIVE_NO_ROOT_DIR">DRIVE_NO_ROOT_DIR</a> 1
+<a name=172 href="/lxr/source/cint/lib/win32api/winfunc.h#172">172</a> #define <a href="/lxr/ident?i=DRIVE_REMOVABLE">DRIVE_REMOVABLE</a>   2
+<a name=173 href="/lxr/source/cint/lib/win32api/winfunc.h#173">173</a> #define <a href="/lxr/ident?i=DRIVE_FIXED">DRIVE_FIXED</a>       3
+<a name=174 href="/lxr/source/cint/lib/win32api/winfunc.h#174">174</a> #define <a href="/lxr/ident?i=DRIVE_REMOTE">DRIVE_REMOTE</a>      4
+<a name=175 href="/lxr/source/cint/lib/win32api/winfunc.h#175">175</a> #define <a href="/lxr/ident?i=DRIVE_CDROM">DRIVE_CDROM</a>       5
+<a name=176 href="/lxr/source/cint/lib/win32api/winfunc.h#176">176</a> #define <a href="/lxr/ident?i=DRIVE_RAMDISK">DRIVE_RAMDISK</a>     6
+<a name=177 href="/lxr/source/cint/lib/win32api/winfunc.h#177">177</a> 
+<a name=178 href="/lxr/source/cint/lib/win32api/winfunc.h#178">178</a> 
+<a name=179 href="/lxr/source/cint/lib/win32api/winfunc.h#179">179</a> #define <a href="/lxr/ident?i=GetFreeSpace">GetFreeSpace</a>(<a href="/lxr/ident?i=w">w</a>)                 (0x100000L)
+<a name=180 href="/lxr/source/cint/lib/win32api/winfunc.h#180">180</a> 
+<a name=181 href="/lxr/source/cint/lib/win32api/winfunc.h#181">181</a> 
+<a name=182 href="/lxr/source/cint/lib/win32api/winfunc.h#182">182</a> #define <a href="/lxr/ident?i=FILE_TYPE_UNKNOWN">FILE_TYPE_UNKNOWN</a>   0x0000
+<a name=183 href="/lxr/source/cint/lib/win32api/winfunc.h#183">183</a> #define <a href="/lxr/ident?i=FILE_TYPE_DISK">FILE_TYPE_DISK</a>      0x0001
+<a name=184 href="/lxr/source/cint/lib/win32api/winfunc.h#184">184</a> #define <a href="/lxr/ident?i=FILE_TYPE_CHAR">FILE_TYPE_CHAR</a>      0x0002
+<a name=185 href="/lxr/source/cint/lib/win32api/winfunc.h#185">185</a> #define <a href="/lxr/ident?i=FILE_TYPE_PIPE">FILE_TYPE_PIPE</a>      0x0003
+<a name=186 href="/lxr/source/cint/lib/win32api/winfunc.h#186">186</a> #define <a href="/lxr/ident?i=FILE_TYPE_REMOTE">FILE_TYPE_REMOTE</a>    0x8000
+<a name=187 href="/lxr/source/cint/lib/win32api/winfunc.h#187">187</a> 
+<a name=188 href="/lxr/source/cint/lib/win32api/winfunc.h#188">188</a> 
+<a name=189 href="/lxr/source/cint/lib/win32api/winfunc.h#189">189</a> #define <a href="/lxr/ident?i=STD_INPUT_HANDLE">STD_INPUT_HANDLE</a>    (<a href="/lxr/ident?i=DWORD">DWORD</a>)-10
+<a name=190 href="/lxr/source/cint/lib/win32api/winfunc.h#190">190</a> #define <a href="/lxr/ident?i=STD_OUTPUT_HANDLE">STD_OUTPUT_HANDLE</a>   (<a href="/lxr/ident?i=DWORD">DWORD</a>)-11
+<a name=191 href="/lxr/source/cint/lib/win32api/winfunc.h#191">191</a> #define <a href="/lxr/ident?i=STD_ERROR_HANDLE">STD_ERROR_HANDLE</a>      (<a href="/lxr/ident?i=DWORD">DWORD</a>)-12
+<a name=192 href="/lxr/source/cint/lib/win32api/winfunc.h#192">192</a> 
+<a name=193 href="/lxr/source/cint/lib/win32api/winfunc.h#193">193</a> #define <a href="/lxr/ident?i=NOPARITY">NOPARITY</a>            0
+<a name=194 href="/lxr/source/cint/lib/win32api/winfunc.h#194">194</a> #define <a href="/lxr/ident?i=ODDPARITY">ODDPARITY</a>           1
+<a name=195 href="/lxr/source/cint/lib/win32api/winfunc.h#195">195</a> #define <a href="/lxr/ident?i=EVENPARITY">EVENPARITY</a>          2
+<a name=196 href="/lxr/source/cint/lib/win32api/winfunc.h#196">196</a> #define <a href="/lxr/ident?i=MARKPARITY">MARKPARITY</a>          3
+<a name=197 href="/lxr/source/cint/lib/win32api/winfunc.h#197">197</a> #define <a href="/lxr/ident?i=SPACEPARITY">SPACEPARITY</a>         4
+<a name=198 href="/lxr/source/cint/lib/win32api/winfunc.h#198">198</a> 
+<a name=199 href="/lxr/source/cint/lib/win32api/winfunc.h#199">199</a> #define <a href="/lxr/ident?i=ONESTOPBIT">ONESTOPBIT</a>          0
+<a name=200 href="/lxr/source/cint/lib/win32api/winfunc.h#200">200</a> #define <a href="/lxr/ident?i=ONE5STOPBITS">ONE5STOPBITS</a>        1
+<a name=201 href="/lxr/source/cint/lib/win32api/winfunc.h#201">201</a> #define <a href="/lxr/ident?i=TWOSTOPBITS">TWOSTOPBITS</a>         2
+<a name=202 href="/lxr/source/cint/lib/win32api/winfunc.h#202">202</a> 
+<a name=203 href="/lxr/source/cint/lib/win32api/winfunc.h#203">203</a> #define <a href="/lxr/ident?i=IGNORE">IGNORE</a>              0       <b><i>// Ignore signal</i></b>
+<a name=204 href="/lxr/source/cint/lib/win32api/winfunc.h#204">204</a> <b><i></i></b>#define <a href="/lxr/ident?i=INFINITE">INFINITE</a>            0xFFFFFFFF  <b><i>// Infinite timeout</i></b>
+<a name=205 href="/lxr/source/cint/lib/win32api/winfunc.h#205">205</a> <b><i></i></b>
+<a name=206 href="/lxr/source/cint/lib/win32api/winfunc.h#206">206</a> <b><i>//</i></b>
+<a name=207 href="/lxr/source/cint/lib/win32api/winfunc.h#207">207</a> <b><i></i></b><b><i>// Basud rates at which the communication device operates</i></b>
+<a name=208 href="/lxr/source/cint/lib/win32api/winfunc.h#208">208</a> <b><i></i></b><b><i>//</i></b>
+<a name=209 href="/lxr/source/cint/lib/win32api/winfunc.h#209">209</a> <b><i></i></b>
+<a name=210 href="/lxr/source/cint/lib/win32api/winfunc.h#210">210</a> #define <a href="/lxr/ident?i=CBR_110">CBR_110</a>             110
+<a name=211 href="/lxr/source/cint/lib/win32api/winfunc.h#211">211</a> #define <a href="/lxr/ident?i=CBR_300">CBR_300</a>             300
+<a name=212 href="/lxr/source/cint/lib/win32api/winfunc.h#212">212</a> #define <a href="/lxr/ident?i=CBR_600">CBR_600</a>             600
+<a name=213 href="/lxr/source/cint/lib/win32api/winfunc.h#213">213</a> #define <a href="/lxr/ident?i=CBR_1200">CBR_1200</a>            1200
+<a name=214 href="/lxr/source/cint/lib/win32api/winfunc.h#214">214</a> #define <a href="/lxr/ident?i=CBR_2400">CBR_2400</a>            2400
+<a name=215 href="/lxr/source/cint/lib/win32api/winfunc.h#215">215</a> #define <a href="/lxr/ident?i=CBR_4800">CBR_4800</a>            4800
+<a name=216 href="/lxr/source/cint/lib/win32api/winfunc.h#216">216</a> #define <a href="/lxr/ident?i=CBR_9600">CBR_9600</a>            9600
+<a name=217 href="/lxr/source/cint/lib/win32api/winfunc.h#217">217</a> #define <a href="/lxr/ident?i=CBR_14400">CBR_14400</a>           14400
+<a name=218 href="/lxr/source/cint/lib/win32api/winfunc.h#218">218</a> #define <a href="/lxr/ident?i=CBR_19200">CBR_19200</a>           19200
+<a name=219 href="/lxr/source/cint/lib/win32api/winfunc.h#219">219</a> #define <a href="/lxr/ident?i=CBR_38400">CBR_38400</a>           38400
+<a name=220 href="/lxr/source/cint/lib/win32api/winfunc.h#220">220</a> #define <a href="/lxr/ident?i=CBR_56000">CBR_56000</a>           56000
+<a name=221 href="/lxr/source/cint/lib/win32api/winfunc.h#221">221</a> #define <a href="/lxr/ident?i=CBR_57600">CBR_57600</a>           57600
+<a name=222 href="/lxr/source/cint/lib/win32api/winfunc.h#222">222</a> #define <a href="/lxr/ident?i=CBR_115200">CBR_115200</a>          115200
+<a name=223 href="/lxr/source/cint/lib/win32api/winfunc.h#223">223</a> #define <a href="/lxr/ident?i=CBR_128000">CBR_128000</a>          128000
+<a name=224 href="/lxr/source/cint/lib/win32api/winfunc.h#224">224</a> #define <a href="/lxr/ident?i=CBR_256000">CBR_256000</a>          256000
+<a name=225 href="/lxr/source/cint/lib/win32api/winfunc.h#225">225</a> 
+<a name=226 href="/lxr/source/cint/lib/win32api/winfunc.h#226">226</a> <b><i>//</i></b>
+<a name=227 href="/lxr/source/cint/lib/win32api/winfunc.h#227">227</a> <b><i></i></b><b><i>// Error Flags</i></b>
+<a name=228 href="/lxr/source/cint/lib/win32api/winfunc.h#228">228</a> <b><i></i></b><b><i>//</i></b>
+<a name=229 href="/lxr/source/cint/lib/win32api/winfunc.h#229">229</a> <b><i></i></b>
+<a name=230 href="/lxr/source/cint/lib/win32api/winfunc.h#230">230</a> #define <a href="/lxr/ident?i=CE_RXOVER">CE_RXOVER</a>           0x0001  <b><i>// Receive Queue overflow</i></b>
+<a name=231 href="/lxr/source/cint/lib/win32api/winfunc.h#231">231</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_OVERRUN">CE_OVERRUN</a>          0x0002  <b><i>// Receive Overrun Error</i></b>
+<a name=232 href="/lxr/source/cint/lib/win32api/winfunc.h#232">232</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_RXPARITY">CE_RXPARITY</a>         0x0004  <b><i>// Receive Parity Error</i></b>
+<a name=233 href="/lxr/source/cint/lib/win32api/winfunc.h#233">233</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_FRAME">CE_FRAME</a>            0x0008  <b><i>// Receive Framing error</i></b>
+<a name=234 href="/lxr/source/cint/lib/win32api/winfunc.h#234">234</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_BREAK">CE_BREAK</a>            0x0010  <b><i>// Break Detected</i></b>
+<a name=235 href="/lxr/source/cint/lib/win32api/winfunc.h#235">235</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_TXFULL">CE_TXFULL</a>           0x0100  <b><i>// TX Queue is full</i></b>
+<a name=236 href="/lxr/source/cint/lib/win32api/winfunc.h#236">236</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_PTO">CE_PTO</a>              0x0200  <b><i>// LPTx Timeout</i></b>
+<a name=237 href="/lxr/source/cint/lib/win32api/winfunc.h#237">237</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_IOE">CE_IOE</a>              0x0400  <b><i>// LPTx I/O Error</i></b>
+<a name=238 href="/lxr/source/cint/lib/win32api/winfunc.h#238">238</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_DNS">CE_DNS</a>              0x0800  <b><i>// LPTx Device not selected</i></b>
+<a name=239 href="/lxr/source/cint/lib/win32api/winfunc.h#239">239</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_OOP">CE_OOP</a>              0x1000  <b><i>// LPTx Out-Of-Paper</i></b>
+<a name=240 href="/lxr/source/cint/lib/win32api/winfunc.h#240">240</a> <b><i></i></b>#define <a href="/lxr/ident?i=CE_MODE">CE_MODE</a>             0x8000  <b><i>// Requested mode unsupported</i></b>
+<a name=241 href="/lxr/source/cint/lib/win32api/winfunc.h#241">241</a> <b><i></i></b>
+<a name=242 href="/lxr/source/cint/lib/win32api/winfunc.h#242">242</a> #define <a href="/lxr/ident?i=IE_BADID">IE_BADID</a>            (-1)    <b><i>// Invalid or unsupported id</i></b>
+<a name=243 href="/lxr/source/cint/lib/win32api/winfunc.h#243">243</a> <b><i></i></b>#define <a href="/lxr/ident?i=IE_OPEN">IE_OPEN</a>             (-2)    <b><i>// Device Already Open</i></b>
+<a name=244 href="/lxr/source/cint/lib/win32api/winfunc.h#244">244</a> <b><i></i></b>#define <a href="/lxr/ident?i=IE_NOPEN">IE_NOPEN</a>            (-3)    <b><i>// Device Not Open</i></b>
+<a name=245 href="/lxr/source/cint/lib/win32api/winfunc.h#245">245</a> <b><i></i></b>#define <a href="/lxr/ident?i=IE_MEMORY">IE_MEMORY</a>           (-4)    <b><i>// Unable to allocate queues</i></b>
+<a name=246 href="/lxr/source/cint/lib/win32api/winfunc.h#246">246</a> <b><i></i></b>#define <a href="/lxr/ident?i=IE_DEFAULT">IE_DEFAULT</a>          (-5)    <b><i>// Error in default parameters</i></b>
+<a name=247 href="/lxr/source/cint/lib/win32api/winfunc.h#247">247</a> <b><i></i></b>#define <a href="/lxr/ident?i=IE_HARDWARE">IE_HARDWARE</a>         (-10)   <b><i>// Hardware Not Present</i></b>
+<a name=248 href="/lxr/source/cint/lib/win32api/winfunc.h#248">248</a> <b><i></i></b>#define <a href="/lxr/ident?i=IE_BYTESIZE">IE_BYTESIZE</a>         (-11)   <b><i>// Illegal Byte Size</i></b>
+<a name=249 href="/lxr/source/cint/lib/win32api/winfunc.h#249">249</a> <b><i></i></b>#define <a href="/lxr/ident?i=IE_BAUDRATE">IE_BAUDRATE</a>         (-12)   <b><i>// Unsupported BaudRate</i></b>
+<a name=250 href="/lxr/source/cint/lib/win32api/winfunc.h#250">250</a> <b><i></i></b>
+<a name=251 href="/lxr/source/cint/lib/win32api/winfunc.h#251">251</a> <b><i>//</i></b>
+<a name=252 href="/lxr/source/cint/lib/win32api/winfunc.h#252">252</a> <b><i></i></b><b><i>// Events</i></b>
+<a name=253 href="/lxr/source/cint/lib/win32api/winfunc.h#253">253</a> <b><i></i></b><b><i>//</i></b>
+<a name=254 href="/lxr/source/cint/lib/win32api/winfunc.h#254">254</a> <b><i></i></b>
+<a name=255 href="/lxr/source/cint/lib/win32api/winfunc.h#255">255</a> #define <a href="/lxr/ident?i=EV_RXCHAR">EV_RXCHAR</a>           0x0001  <b><i>// Any Character received</i></b>
+<a name=256 href="/lxr/source/cint/lib/win32api/winfunc.h#256">256</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_RXFLAG">EV_RXFLAG</a>           0x0002  <b><i>// Received certain character</i></b>
+<a name=257 href="/lxr/source/cint/lib/win32api/winfunc.h#257">257</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_TXEMPTY">EV_TXEMPTY</a>          0x0004  <b><i>// Transmitt Queue Empty</i></b>
+<a name=258 href="/lxr/source/cint/lib/win32api/winfunc.h#258">258</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_CTS">EV_CTS</a>              0x0008  <b><i>// CTS changed state</i></b>
+<a name=259 href="/lxr/source/cint/lib/win32api/winfunc.h#259">259</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_DSR">EV_DSR</a>              0x0010  <b><i>// DSR changed state</i></b>
+<a name=260 href="/lxr/source/cint/lib/win32api/winfunc.h#260">260</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_RLSD">EV_RLSD</a>             0x0020  <b><i>// RLSD changed state</i></b>
+<a name=261 href="/lxr/source/cint/lib/win32api/winfunc.h#261">261</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_BREAK">EV_BREAK</a>            0x0040  <b><i>// BREAK received</i></b>
+<a name=262 href="/lxr/source/cint/lib/win32api/winfunc.h#262">262</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_ERR">EV_ERR</a>              0x0080  <b><i>// Line status error occurred</i></b>
+<a name=263 href="/lxr/source/cint/lib/win32api/winfunc.h#263">263</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_RING">EV_RING</a>             0x0100  <b><i>// Ring signal detected</i></b>
+<a name=264 href="/lxr/source/cint/lib/win32api/winfunc.h#264">264</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_PERR">EV_PERR</a>             0x0200  <b><i>// Printer error occured</i></b>
+<a name=265 href="/lxr/source/cint/lib/win32api/winfunc.h#265">265</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_RX80FULL">EV_RX80FULL</a>         0x0400  <b><i>// Receive buffer is 80 percent full</i></b>
+<a name=266 href="/lxr/source/cint/lib/win32api/winfunc.h#266">266</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_EVENT1">EV_EVENT1</a>           0x0800  <b><i>// Provider specific event 1</i></b>
+<a name=267 href="/lxr/source/cint/lib/win32api/winfunc.h#267">267</a> <b><i></i></b>#define <a href="/lxr/ident?i=EV_EVENT2">EV_EVENT2</a>           0x1000  <b><i>// Provider specific event 2</i></b>
+<a name=268 href="/lxr/source/cint/lib/win32api/winfunc.h#268">268</a> <b><i></i></b>
+<a name=269 href="/lxr/source/cint/lib/win32api/winfunc.h#269">269</a> <b><i>//</i></b>
+<a name=270 href="/lxr/source/cint/lib/win32api/winfunc.h#270">270</a> <b><i></i></b><b><i>// Escape Functions</i></b>
+<a name=271 href="/lxr/source/cint/lib/win32api/winfunc.h#271">271</a> <b><i></i></b><b><i>//</i></b>
+<a name=272 href="/lxr/source/cint/lib/win32api/winfunc.h#272">272</a> <b><i></i></b>
+<a name=273 href="/lxr/source/cint/lib/win32api/winfunc.h#273">273</a> #define <a href="/lxr/ident?i=SETXOFF">SETXOFF</a>             1       <b><i>// Simulate XOFF received</i></b>
+<a name=274 href="/lxr/source/cint/lib/win32api/winfunc.h#274">274</a> <b><i></i></b>#define <a href="/lxr/ident?i=SETXON">SETXON</a>              2       <b><i>// Simulate XON received</i></b>
+<a name=275 href="/lxr/source/cint/lib/win32api/winfunc.h#275">275</a> <b><i></i></b>#define <a href="/lxr/ident?i=SETRTS">SETRTS</a>              3       <b><i>// Set RTS high</i></b>
+<a name=276 href="/lxr/source/cint/lib/win32api/winfunc.h#276">276</a> <b><i></i></b>#define <a href="/lxr/ident?i=CLRRTS">CLRRTS</a>              4       <b><i>// Set RTS low</i></b>
+<a name=277 href="/lxr/source/cint/lib/win32api/winfunc.h#277">277</a> <b><i></i></b>#define <a href="/lxr/ident?i=SETDTR">SETDTR</a>              5       <b><i>// Set DTR high</i></b>
+<a name=278 href="/lxr/source/cint/lib/win32api/winfunc.h#278">278</a> <b><i></i></b>#define <a href="/lxr/ident?i=CLRDTR">CLRDTR</a>              6       <b><i>// Set DTR low</i></b>
+<a name=279 href="/lxr/source/cint/lib/win32api/winfunc.h#279">279</a> <b><i></i></b>#define <a href="/lxr/ident?i=RESETDEV">RESETDEV</a>            7       <b><i>// Reset device if possible</i></b>
+<a name=280 href="/lxr/source/cint/lib/win32api/winfunc.h#280">280</a> <b><i></i></b>#define <a href="/lxr/ident?i=SETBREAK">SETBREAK</a>            8       <b><i>// Set the device break line.</i></b>
+<a name=281 href="/lxr/source/cint/lib/win32api/winfunc.h#281">281</a> <b><i></i></b>#define <a href="/lxr/ident?i=CLRBREAK">CLRBREAK</a>            9       <b><i>// Clear the device break line.</i></b>
+<a name=282 href="/lxr/source/cint/lib/win32api/winfunc.h#282">282</a> <b><i></i></b>
+<a name=283 href="/lxr/source/cint/lib/win32api/winfunc.h#283">283</a> <b><i>//</i></b>
+<a name=284 href="/lxr/source/cint/lib/win32api/winfunc.h#284">284</a> <b><i></i></b><b><i>// PURGE function flags.</i></b>
+<a name=285 href="/lxr/source/cint/lib/win32api/winfunc.h#285">285</a> <b><i></i></b><b><i>//</i></b>
+<a name=286 href="/lxr/source/cint/lib/win32api/winfunc.h#286">286</a> <b><i></i></b>#define <a href="/lxr/ident?i=PURGE_TXABORT">PURGE_TXABORT</a>       0x0001  <b><i>// Kill the pending/current writes to the comm port.</i></b>
+<a name=287 href="/lxr/source/cint/lib/win32api/winfunc.h#287">287</a> <b><i></i></b>#define <a href="/lxr/ident?i=PURGE_RXABORT">PURGE_RXABORT</a>       0x0002  <b><i>// Kill the pending/current reads to the comm port.</i></b>
+<a name=288 href="/lxr/source/cint/lib/win32api/winfunc.h#288">288</a> <b><i></i></b>#define <a href="/lxr/ident?i=PURGE_TXCLEAR">PURGE_TXCLEAR</a>       0x0004  <b><i>// Kill the transmit queue if there.</i></b>
+<a name=289 href="/lxr/source/cint/lib/win32api/winfunc.h#289">289</a> <b><i></i></b>#define <a href="/lxr/ident?i=PURGE_RXCLEAR">PURGE_RXCLEAR</a>       0x0008  <b><i>// Kill the typeahead buffer if there.</i></b>
+<a name=290 href="/lxr/source/cint/lib/win32api/winfunc.h#290">290</a> <b><i></i></b>
+<a name=291 href="/lxr/source/cint/lib/win32api/winfunc.h#291">291</a> #define <a href="/lxr/ident?i=LPTx">LPTx</a>                0x80    <b><i>// Set if ID is for LPT device</i></b>
+<a name=292 href="/lxr/source/cint/lib/win32api/winfunc.h#292">292</a> <b><i></i></b>
+<a name=293 href="/lxr/source/cint/lib/win32api/winfunc.h#293">293</a> <b><i>//</i></b>
+<a name=294 href="/lxr/source/cint/lib/win32api/winfunc.h#294">294</a> <b><i></i></b><b><i>// Modem Status Flags</i></b>
+<a name=295 href="/lxr/source/cint/lib/win32api/winfunc.h#295">295</a> <b><i></i></b><b><i>//</i></b>
+<a name=296 href="/lxr/source/cint/lib/win32api/winfunc.h#296">296</a> <b><i></i></b>#define <a href="/lxr/ident?i=MS_CTS_ON">MS_CTS_ON</a>           ((<a href="/lxr/ident?i=DWORD">DWORD</a>)0x0010)
+<a name=297 href="/lxr/source/cint/lib/win32api/winfunc.h#297">297</a> #define <a href="/lxr/ident?i=MS_DSR_ON">MS_DSR_ON</a>           ((<a href="/lxr/ident?i=DWORD">DWORD</a>)0x0020)
+<a name=298 href="/lxr/source/cint/lib/win32api/winfunc.h#298">298</a> #define <a href="/lxr/ident?i=MS_RING_ON">MS_RING_ON</a>          ((<a href="/lxr/ident?i=DWORD">DWORD</a>)0x0040)
+<a name=299 href="/lxr/source/cint/lib/win32api/winfunc.h#299">299</a> #define <a href="/lxr/ident?i=MS_RLSD_ON">MS_RLSD_ON</a>          ((<a href="/lxr/ident?i=DWORD">DWORD</a>)0x0080)
+<a name=300 href="/lxr/source/cint/lib/win32api/winfunc.h#300">300</a> 
+<a name=301 href="/lxr/source/cint/lib/win32api/winfunc.h#301">301</a> <b><i>//</i></b>
+<a name=302 href="/lxr/source/cint/lib/win32api/winfunc.h#302">302</a> <b><i></i></b><b><i>// WaitSoundState() Constants</i></b>
+<a name=303 href="/lxr/source/cint/lib/win32api/winfunc.h#303">303</a> <b><i></i></b><b><i>//</i></b>
+<a name=304 href="/lxr/source/cint/lib/win32api/winfunc.h#304">304</a> <b><i></i></b>
+<a name=305 href="/lxr/source/cint/lib/win32api/winfunc.h#305">305</a> #define <a href="/lxr/ident?i=S_QUEUEEMPTY">S_QUEUEEMPTY</a>        0
+<a name=306 href="/lxr/source/cint/lib/win32api/winfunc.h#306">306</a> #define <a href="/lxr/ident?i=S_THRESHOLD">S_THRESHOLD</a>         1
+<a name=307 href="/lxr/source/cint/lib/win32api/winfunc.h#307">307</a> #define <a href="/lxr/ident?i=S_ALLTHRESHOLD">S_ALLTHRESHOLD</a>      2
+<a name=308 href="/lxr/source/cint/lib/win32api/winfunc.h#308">308</a> 
+<a name=309 href="/lxr/source/cint/lib/win32api/winfunc.h#309">309</a> <b><i>//</i></b>
+<a name=310 href="/lxr/source/cint/lib/win32api/winfunc.h#310">310</a> <b><i></i></b><b><i>// Accent Modes</i></b>
+<a name=311 href="/lxr/source/cint/lib/win32api/winfunc.h#311">311</a> <b><i></i></b><b><i>//</i></b>
+<a name=312 href="/lxr/source/cint/lib/win32api/winfunc.h#312">312</a> <b><i></i></b>
+<a name=313 href="/lxr/source/cint/lib/win32api/winfunc.h#313">313</a> #define <a href="/lxr/ident?i=S_NORMAL">S_NORMAL</a>      0
+<a name=314 href="/lxr/source/cint/lib/win32api/winfunc.h#314">314</a> #define <a href="/lxr/ident?i=S_LEGATO">S_LEGATO</a>      1
+<a name=315 href="/lxr/source/cint/lib/win32api/winfunc.h#315">315</a> #define <a href="/lxr/ident?i=S_STACCATO">S_STACCATO</a>    2
+<a name=316 href="/lxr/source/cint/lib/win32api/winfunc.h#316">316</a> 
+<a name=317 href="/lxr/source/cint/lib/win32api/winfunc.h#317">317</a> <b><i>//</i></b>
+<a name=318 href="/lxr/source/cint/lib/win32api/winfunc.h#318">318</a> <b><i></i></b><b><i>// SetSoundNoise() Sources</i></b>
+<a name=319 href="/lxr/source/cint/lib/win32api/winfunc.h#319">319</a> <b><i></i></b><b><i>//</i></b>
+<a name=320 href="/lxr/source/cint/lib/win32api/winfunc.h#320">320</a> <b><i></i></b>
+<a name=321 href="/lxr/source/cint/lib/win32api/winfunc.h#321">321</a> #define <a href="/lxr/ident?i=S_PERIOD512">S_PERIOD512</a>   0     <b><i>// Freq = N/512 high pitch, less coarse hiss</i></b>
+<a name=322 href="/lxr/source/cint/lib/win32api/winfunc.h#322">322</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_PERIOD1024">S_PERIOD1024</a>  1     <b><i>// Freq = N/1024</i></b>
+<a name=323 href="/lxr/source/cint/lib/win32api/winfunc.h#323">323</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_PERIOD2048">S_PERIOD2048</a>  2     <b><i>// Freq = N/2048 low pitch, more coarse hiss</i></b>
+<a name=324 href="/lxr/source/cint/lib/win32api/winfunc.h#324">324</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_PERIODVOICE">S_PERIODVOICE</a> 3     <b><i>// Source is frequency from voice channel (3)</i></b>
+<a name=325 href="/lxr/source/cint/lib/win32api/winfunc.h#325">325</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_WHITE512">S_WHITE512</a>    4     <b><i>// Freq = N/512 high pitch, less coarse hiss</i></b>
+<a name=326 href="/lxr/source/cint/lib/win32api/winfunc.h#326">326</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_WHITE1024">S_WHITE1024</a>   5     <b><i>// Freq = N/1024</i></b>
+<a name=327 href="/lxr/source/cint/lib/win32api/winfunc.h#327">327</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_WHITE2048">S_WHITE2048</a>   6     <b><i>// Freq = N/2048 low pitch, more coarse hiss</i></b>
+<a name=328 href="/lxr/source/cint/lib/win32api/winfunc.h#328">328</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_WHITEVOICE">S_WHITEVOICE</a>  7     <b><i>// Source is frequency from voice channel (3)</i></b>
+<a name=329 href="/lxr/source/cint/lib/win32api/winfunc.h#329">329</a> <b><i></i></b>
+<a name=330 href="/lxr/source/cint/lib/win32api/winfunc.h#330">330</a> #define <a href="/lxr/ident?i=S_SERDVNA">S_SERDVNA</a>     (-1)  <b><i>// Device not available</i></b>
+<a name=331 href="/lxr/source/cint/lib/win32api/winfunc.h#331">331</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SEROFM">S_SEROFM</a>      (-2)  <b><i>// Out of memory</i></b>
+<a name=332 href="/lxr/source/cint/lib/win32api/winfunc.h#332">332</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERMACT">S_SERMACT</a>     (-3)  <b><i>// Music active</i></b>
+<a name=333 href="/lxr/source/cint/lib/win32api/winfunc.h#333">333</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERQFUL">S_SERQFUL</a>     (-4)  <b><i>// Queue full</i></b>
+<a name=334 href="/lxr/source/cint/lib/win32api/winfunc.h#334">334</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERBDNT">S_SERBDNT</a>     (-5)  <b><i>// Invalid note</i></b>
+<a name=335 href="/lxr/source/cint/lib/win32api/winfunc.h#335">335</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDLN">S_SERDLN</a>      (-6)  <b><i>// Invalid note length</i></b>
+<a name=336 href="/lxr/source/cint/lib/win32api/winfunc.h#336">336</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDCC">S_SERDCC</a>      (-7)  <b><i>// Invalid note count</i></b>
+<a name=337 href="/lxr/source/cint/lib/win32api/winfunc.h#337">337</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDTP">S_SERDTP</a>      (-8)  <b><i>// Invalid tempo</i></b>
+<a name=338 href="/lxr/source/cint/lib/win32api/winfunc.h#338">338</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDVL">S_SERDVL</a>      (-9)  <b><i>// Invalid volume</i></b>
+<a name=339 href="/lxr/source/cint/lib/win32api/winfunc.h#339">339</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDMD">S_SERDMD</a>      (-10) <b><i>// Invalid mode</i></b>
+<a name=340 href="/lxr/source/cint/lib/win32api/winfunc.h#340">340</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDSH">S_SERDSH</a>      (-11) <b><i>// Invalid shape</i></b>
+<a name=341 href="/lxr/source/cint/lib/win32api/winfunc.h#341">341</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDPT">S_SERDPT</a>      (-12) <b><i>// Invalid pitch</i></b>
+<a name=342 href="/lxr/source/cint/lib/win32api/winfunc.h#342">342</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDFQ">S_SERDFQ</a>      (-13) <b><i>// Invalid frequency</i></b>
+<a name=343 href="/lxr/source/cint/lib/win32api/winfunc.h#343">343</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDDR">S_SERDDR</a>      (-14) <b><i>// Invalid duration</i></b>
+<a name=344 href="/lxr/source/cint/lib/win32api/winfunc.h#344">344</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDSR">S_SERDSR</a>      (-15) <b><i>// Invalid source</i></b>
+<a name=345 href="/lxr/source/cint/lib/win32api/winfunc.h#345">345</a> <b><i></i></b>#define <a href="/lxr/ident?i=S_SERDST">S_SERDST</a>      (-16) <b><i>// Invalid state</i></b>
+<a name=346 href="/lxr/source/cint/lib/win32api/winfunc.h#346">346</a> <b><i></i></b>
+<a name=347 href="/lxr/source/cint/lib/win32api/winfunc.h#347">347</a> #define <a href="/lxr/ident?i=NMPWAIT_WAIT_FOREVER">NMPWAIT_WAIT_FOREVER</a>            0xffffffff
+<a name=348 href="/lxr/source/cint/lib/win32api/winfunc.h#348">348</a> #define <a href="/lxr/ident?i=NMPWAIT_NOWAIT">NMPWAIT_NOWAIT</a>                  0x00000001
+<a name=349 href="/lxr/source/cint/lib/win32api/winfunc.h#349">349</a> #define <a href="/lxr/ident?i=NMPWAIT_USE_DEFAULT_WAIT">NMPWAIT_USE_DEFAULT_WAIT</a>        0x00000000
+<a name=350 href="/lxr/source/cint/lib/win32api/winfunc.h#350">350</a> 
+<a name=351 href="/lxr/source/cint/lib/win32api/winfunc.h#351">351</a> <b><i>/* Flags returned by LocalFlags (in addition to LMEM_DISCARDABLE) */</i></b>
+<a name=352 href="/lxr/source/cint/lib/win32api/winfunc.h#352">352</a> #define <a href="/lxr/ident?i=LMEM_DISCARDED">LMEM_DISCARDED</a>      0x4000
+<a name=353 href="/lxr/source/cint/lib/win32api/winfunc.h#353">353</a> #define <a href="/lxr/ident?i=LMEM_LOCKCOUNT">LMEM_LOCKCOUNT</a>      0x00FF
+<a name=354 href="/lxr/source/cint/lib/win32api/winfunc.h#354">354</a> 
+<a name=355 href="/lxr/source/cint/lib/win32api/winfunc.h#355">355</a> <b><i>//</i></b>
+<a name=356 href="/lxr/source/cint/lib/win32api/winfunc.h#356">356</a> <b><i></i></b><b><i>// dwCreationFlag values</i></b>
+<a name=357 href="/lxr/source/cint/lib/win32api/winfunc.h#357">357</a> <b><i></i></b><b><i>//</i></b>
+<a name=358 href="/lxr/source/cint/lib/win32api/winfunc.h#358">358</a> <b><i></i></b>
+<a name=359 href="/lxr/source/cint/lib/win32api/winfunc.h#359">359</a> #define <a href="/lxr/ident?i=DEBUG_PROCESS">DEBUG_PROCESS</a>               0x00000001
+<a name=360 href="/lxr/source/cint/lib/win32api/winfunc.h#360">360</a> #define <a href="/lxr/ident?i=DEBUG_ONLY_THIS_PROCESS">DEBUG_ONLY_THIS_PROCESS</a>     0x00000002
+<a name=361 href="/lxr/source/cint/lib/win32api/winfunc.h#361">361</a> 
+<a name=362 href="/lxr/source/cint/lib/win32api/winfunc.h#362">362</a> #define <a href="/lxr/ident?i=CREATE_SUSPENDED">CREATE_SUSPENDED</a>            0x00000004
+<a name=363 href="/lxr/source/cint/lib/win32api/winfunc.h#363">363</a> 
+<a name=364 href="/lxr/source/cint/lib/win32api/winfunc.h#364">364</a> #define <a href="/lxr/ident?i=DETACHED_PROCESS">DETACHED_PROCESS</a>            0x00000008
+<a name=365 href="/lxr/source/cint/lib/win32api/winfunc.h#365">365</a> 
+<a name=366 href="/lxr/source/cint/lib/win32api/winfunc.h#366">366</a> #define <a href="/lxr/ident?i=CREATE_NEW_CONSOLE">CREATE_NEW_CONSOLE</a>          0x00000010
+<a name=367 href="/lxr/source/cint/lib/win32api/winfunc.h#367">367</a> 
+<a name=368 href="/lxr/source/cint/lib/win32api/winfunc.h#368">368</a> #define <a href="/lxr/ident?i=NORMAL_PRIORITY_CLASS">NORMAL_PRIORITY_CLASS</a>       0x00000020
+<a name=369 href="/lxr/source/cint/lib/win32api/winfunc.h#369">369</a> #define <a href="/lxr/ident?i=IDLE_PRIORITY_CLASS">IDLE_PRIORITY_CLASS</a>         0x00000040
+<a name=370 href="/lxr/source/cint/lib/win32api/winfunc.h#370">370</a> #define <a href="/lxr/ident?i=HIGH_PRIORITY_CLASS">HIGH_PRIORITY_CLASS</a>         0x00000080
+<a name=371 href="/lxr/source/cint/lib/win32api/winfunc.h#371">371</a> #define <a href="/lxr/ident?i=REALTIME_PRIORITY_CLASS">REALTIME_PRIORITY_CLASS</a>     0x00000100
+<a name=372 href="/lxr/source/cint/lib/win32api/winfunc.h#372">372</a> 
+<a name=373 href="/lxr/source/cint/lib/win32api/winfunc.h#373">373</a> #define <a href="/lxr/ident?i=CREATE_NEW_PROCESS_GROUP">CREATE_NEW_PROCESS_GROUP</a>    0x00000200
+<a name=374 href="/lxr/source/cint/lib/win32api/winfunc.h#374">374</a> #define <a href="/lxr/ident?i=CREATE_UNICODE_ENVIRONMENT">CREATE_UNICODE_ENVIRONMENT</a>  0x00000400
+<a name=375 href="/lxr/source/cint/lib/win32api/winfunc.h#375">375</a> 
+<a name=376 href="/lxr/source/cint/lib/win32api/winfunc.h#376">376</a> #define <a href="/lxr/ident?i=CREATE_SEPARATE_WOW_VDM">CREATE_SEPARATE_WOW_VDM</a>     0x00000800
+<a name=377 href="/lxr/source/cint/lib/win32api/winfunc.h#377">377</a> #define <a href="/lxr/ident?i=CREATE_SHARED_WOW_VDM">CREATE_SHARED_WOW_VDM</a>       0x00001000
+<a name=378 href="/lxr/source/cint/lib/win32api/winfunc.h#378">378</a> 
+<a name=379 href="/lxr/source/cint/lib/win32api/winfunc.h#379">379</a> #define <a href="/lxr/ident?i=CREATE_DEFAULT_ERROR_MODE">CREATE_DEFAULT_ERROR_MODE</a>   0x04000000
+<a name=380 href="/lxr/source/cint/lib/win32api/winfunc.h#380">380</a> #define <a href="/lxr/ident?i=CREATE_NO_WINDOW">CREATE_NO_WINDOW</a>            0x08000000
+<a name=381 href="/lxr/source/cint/lib/win32api/winfunc.h#381">381</a> 
+<a name=382 href="/lxr/source/cint/lib/win32api/winfunc.h#382">382</a> #define <a href="/lxr/ident?i=PROFILE_USER">PROFILE_USER</a>                0x10000000
+<a name=383 href="/lxr/source/cint/lib/win32api/winfunc.h#383">383</a> #define <a href="/lxr/ident?i=PROFILE_KERNEL">PROFILE_KERNEL</a>              0x20000000
+<a name=384 href="/lxr/source/cint/lib/win32api/winfunc.h#384">384</a> #define <a href="/lxr/ident?i=PROFILE_SERVER">PROFILE_SERVER</a>              0x40000000
+<a name=385 href="/lxr/source/cint/lib/win32api/winfunc.h#385">385</a> 
+<a name=386 href="/lxr/source/cint/lib/win32api/winfunc.h#386">386</a> <b><i>/*</i></b>
+<a name=387 href="/lxr/source/cint/lib/win32api/winfunc.h#387">387</a> <b><i> * Dialog Box Command IDs</i></b>
+<a name=388 href="/lxr/source/cint/lib/win32api/winfunc.h#388">388</a> <b><i> */</i></b>
+<a name=389 href="/lxr/source/cint/lib/win32api/winfunc.h#389">389</a> #define <a href="/lxr/ident?i=IDOK">IDOK</a>                1
+<a name=390 href="/lxr/source/cint/lib/win32api/winfunc.h#390">390</a> #define <a href="/lxr/ident?i=IDCANCEL">IDCANCEL</a>            2
+<a name=391 href="/lxr/source/cint/lib/win32api/winfunc.h#391">391</a> #define <a href="/lxr/ident?i=IDABORT">IDABORT</a>             3
+<a name=392 href="/lxr/source/cint/lib/win32api/winfunc.h#392">392</a> #define <a href="/lxr/ident?i=IDRETRY">IDRETRY</a>             4
+<a name=393 href="/lxr/source/cint/lib/win32api/winfunc.h#393">393</a> #define <a href="/lxr/ident?i=IDIGNORE">IDIGNORE</a>            5
+<a name=394 href="/lxr/source/cint/lib/win32api/winfunc.h#394">394</a> #define <a href="/lxr/ident?i=IDYES">IDYES</a>               6
+<a name=395 href="/lxr/source/cint/lib/win32api/winfunc.h#395">395</a> #define <a href="/lxr/ident?i=IDNO">IDNO</a>                7
+<a name=396 href="/lxr/source/cint/lib/win32api/winfunc.h#396">396</a> <b><i>// #if(WINVER &gt;= 0x0400)</i></b>
+<a name=397 href="/lxr/source/cint/lib/win32api/winfunc.h#397">397</a> <b><i></i></b>#define <a href="/lxr/ident?i=IDCLOSE">IDCLOSE</a>         8
+<a name=398 href="/lxr/source/cint/lib/win32api/winfunc.h#398">398</a> #define <a href="/lxr/ident?i=IDHELP">IDHELP</a>          9
+<a name=399 href="/lxr/source/cint/lib/win32api/winfunc.h#399">399</a> <b><i>//#endif /* WINVER &gt;= 0x0400 */</i></b>
+<a name=400 href="/lxr/source/cint/lib/win32api/winfunc.h#400">400</a> <b><i></i></b>
+<a name=401 href="/lxr/source/cint/lib/win32api/winfunc.h#401">401</a> <b><i>/*</i></b>
+<a name=402 href="/lxr/source/cint/lib/win32api/winfunc.h#402">402</a> <b><i> * MessageBox() Flags</i></b>
+<a name=403 href="/lxr/source/cint/lib/win32api/winfunc.h#403">403</a> <b><i> */</i></b>
+<a name=404 href="/lxr/source/cint/lib/win32api/winfunc.h#404">404</a> #define <a href="/lxr/ident?i=MB_OK">MB_OK</a>                       0x00000000L
+<a name=405 href="/lxr/source/cint/lib/win32api/winfunc.h#405">405</a> #define <a href="/lxr/ident?i=MB_OKCANCEL">MB_OKCANCEL</a>                 0x00000001L
+<a name=406 href="/lxr/source/cint/lib/win32api/winfunc.h#406">406</a> #define <a href="/lxr/ident?i=MB_ABORTRETRYIGNORE">MB_ABORTRETRYIGNORE</a>         0x00000002L
+<a name=407 href="/lxr/source/cint/lib/win32api/winfunc.h#407">407</a> #define <a href="/lxr/ident?i=MB_YESNOCANCEL">MB_YESNOCANCEL</a>              0x00000003L
+<a name=408 href="/lxr/source/cint/lib/win32api/winfunc.h#408">408</a> #define <a href="/lxr/ident?i=MB_YESNO">MB_YESNO</a>                    0x00000004L
+<a name=409 href="/lxr/source/cint/lib/win32api/winfunc.h#409">409</a> #define <a href="/lxr/ident?i=MB_RETRYCANCEL">MB_RETRYCANCEL</a>              0x00000005L
+<a name=410 href="/lxr/source/cint/lib/win32api/winfunc.h#410">410</a> 
+<a name=411 href="/lxr/source/cint/lib/win32api/winfunc.h#411">411</a> #define <a href="/lxr/ident?i=MB_ICONHAND">MB_ICONHAND</a>                 0x00000010L
+<a name=412 href="/lxr/source/cint/lib/win32api/winfunc.h#412">412</a> #define <a href="/lxr/ident?i=MB_ICONQUESTION">MB_ICONQUESTION</a>             0x00000020L
+<a name=413 href="/lxr/source/cint/lib/win32api/winfunc.h#413">413</a> #define <a href="/lxr/ident?i=MB_ICONEXCLAMATION">MB_ICONEXCLAMATION</a>          0x00000030L
+<a name=414 href="/lxr/source/cint/lib/win32api/winfunc.h#414">414</a> #define <a href="/lxr/ident?i=MB_ICONASTERISK">MB_ICONASTERISK</a>             0x00000040L
+<a name=415 href="/lxr/source/cint/lib/win32api/winfunc.h#415">415</a> 
+<a name=416 href="/lxr/source/cint/lib/win32api/winfunc.h#416">416</a> <b><i>// #if(WINVER &gt;= 0x0400)</i></b>
+<a name=417 href="/lxr/source/cint/lib/win32api/winfunc.h#417">417</a> <b><i></i></b>#define <a href="/lxr/ident?i=MB_ICONWARNING">MB_ICONWARNING</a>              <a href="/lxr/ident?i=MB_ICONEXCLAMATION">MB_ICONEXCLAMATION</a>
+<a name=418 href="/lxr/source/cint/lib/win32api/winfunc.h#418">418</a> #define <a href="/lxr/ident?i=MB_ICONERROR">MB_ICONERROR</a>                <a href="/lxr/ident?i=MB_ICONHAND">MB_ICONHAND</a>
+<a name=419 href="/lxr/source/cint/lib/win32api/winfunc.h#419">419</a> <b><i>//#endif /* WINVER &gt;= 0x0400 */</i></b>
+<a name=420 href="/lxr/source/cint/lib/win32api/winfunc.h#420">420</a> <b><i></i></b>
+<a name=421 href="/lxr/source/cint/lib/win32api/winfunc.h#421">421</a> #define <a href="/lxr/ident?i=MB_ICONINFORMATION">MB_ICONINFORMATION</a>          <a href="/lxr/ident?i=MB_ICONASTERISK">MB_ICONASTERISK</a>
+<a name=422 href="/lxr/source/cint/lib/win32api/winfunc.h#422">422</a> #define <a href="/lxr/ident?i=MB_ICONSTOP">MB_ICONSTOP</a>                 <a href="/lxr/ident?i=MB_ICONHAND">MB_ICONHAND</a>
+<a name=423 href="/lxr/source/cint/lib/win32api/winfunc.h#423">423</a> 
+<a name=424 href="/lxr/source/cint/lib/win32api/winfunc.h#424">424</a> #define <a href="/lxr/ident?i=MB_DEFBUTTON1">MB_DEFBUTTON1</a>               0x00000000L
+<a name=425 href="/lxr/source/cint/lib/win32api/winfunc.h#425">425</a> #define <a href="/lxr/ident?i=MB_DEFBUTTON2">MB_DEFBUTTON2</a>               0x00000100L
+<a name=426 href="/lxr/source/cint/lib/win32api/winfunc.h#426">426</a> #define <a href="/lxr/ident?i=MB_DEFBUTTON3">MB_DEFBUTTON3</a>               0x00000200L
+<a name=427 href="/lxr/source/cint/lib/win32api/winfunc.h#427">427</a> <b><i>//#if(WINVER &gt;= 0x0400)</i></b>
+<a name=428 href="/lxr/source/cint/lib/win32api/winfunc.h#428">428</a> <b><i></i></b>#define <a href="/lxr/ident?i=MB_DEFBUTTON4">MB_DEFBUTTON4</a>               0x00000300L
+<a name=429 href="/lxr/source/cint/lib/win32api/winfunc.h#429">429</a> <b><i>//#endif /* WINVER &gt;= 0x0400 */</i></b>
+<a name=430 href="/lxr/source/cint/lib/win32api/winfunc.h#430">430</a> <b><i></i></b>
+<a name=431 href="/lxr/source/cint/lib/win32api/winfunc.h#431">431</a> #define <a href="/lxr/ident?i=MB_APPLMODAL">MB_APPLMODAL</a>                0x00000000L
+<a name=432 href="/lxr/source/cint/lib/win32api/winfunc.h#432">432</a> #define <a href="/lxr/ident?i=MB_SYSTEMMODAL">MB_SYSTEMMODAL</a>              0x00001000L
+<a name=433 href="/lxr/source/cint/lib/win32api/winfunc.h#433">433</a> #define <a href="/lxr/ident?i=MB_TASKMODAL">MB_TASKMODAL</a>                0x00002000L
+<a name=434 href="/lxr/source/cint/lib/win32api/winfunc.h#434">434</a> <b><i>//#if(WINVER &gt;= 0x0400)</i></b>
+<a name=435 href="/lxr/source/cint/lib/win32api/winfunc.h#435">435</a> <b><i></i></b>#define <a href="/lxr/ident?i=MB_HELP">MB_HELP</a>                     0x00004000L <b><i>// Help Button</i></b>
+<a name=436 href="/lxr/source/cint/lib/win32api/winfunc.h#436">436</a> <b><i></i></b>#define <a href="/lxr/ident?i=MB_RIGHT">MB_RIGHT</a>                    0x00080000L
+<a name=437 href="/lxr/source/cint/lib/win32api/winfunc.h#437">437</a> #define <a href="/lxr/ident?i=MB_RTLREADING">MB_RTLREADING</a>               0x00100000L
+<a name=438 href="/lxr/source/cint/lib/win32api/winfunc.h#438">438</a> <b><i>//#endif /* WINVER &gt;= 0x0400 */</i></b>
+<a name=439 href="/lxr/source/cint/lib/win32api/winfunc.h#439">439</a> <b><i></i></b>
+<a name=440 href="/lxr/source/cint/lib/win32api/winfunc.h#440">440</a> #define <a href="/lxr/ident?i=MB_NOFOCUS">MB_NOFOCUS</a>                  0x00008000L
+<a name=441 href="/lxr/source/cint/lib/win32api/winfunc.h#441">441</a> #define <a href="/lxr/ident?i=MB_SETFOREGROUND">MB_SETFOREGROUND</a>            0x00010000L
+<a name=442 href="/lxr/source/cint/lib/win32api/winfunc.h#442">442</a> #define <a href="/lxr/ident?i=MB_DEFAULT_DESKTOP_ONLY">MB_DEFAULT_DESKTOP_ONLY</a>     0x00020000L
+<a name=443 href="/lxr/source/cint/lib/win32api/winfunc.h#443">443</a> #define <a href="/lxr/ident?i=MB_SERVICE_NOTIFICATION">MB_SERVICE_NOTIFICATION</a>     0x00040000L
+<a name=444 href="/lxr/source/cint/lib/win32api/winfunc.h#444">444</a> 
+<a name=445 href="/lxr/source/cint/lib/win32api/winfunc.h#445">445</a> #define <a href="/lxr/ident?i=MB_TYPEMASK">MB_TYPEMASK</a>                 0x0000000FL
+<a name=446 href="/lxr/source/cint/lib/win32api/winfunc.h#446">446</a> <b><i>//#if(WINVER &gt;= 0x0400)</i></b>
+<a name=447 href="/lxr/source/cint/lib/win32api/winfunc.h#447">447</a> <b><i></i></b>#define <a href="/lxr/ident?i=MB_USERICON">MB_USERICON</a>                 0x00000080L
+<a name=448 href="/lxr/source/cint/lib/win32api/winfunc.h#448">448</a> <b><i>//#endif /* WINVER &gt;= 0x0400 */</i></b>
+<a name=449 href="/lxr/source/cint/lib/win32api/winfunc.h#449">449</a> <b><i></i></b>#define <a href="/lxr/ident?i=MB_ICONMASK">MB_ICONMASK</a>                 0x000000F0L
+<a name=450 href="/lxr/source/cint/lib/win32api/winfunc.h#450">450</a> #define <a href="/lxr/ident?i=MB_DEFMASK">MB_DEFMASK</a>                  0x00000F00L
+<a name=451 href="/lxr/source/cint/lib/win32api/winfunc.h#451">451</a> #define <a href="/lxr/ident?i=MB_MODEMASK">MB_MODEMASK</a>                 0x00003000L
+<a name=452 href="/lxr/source/cint/lib/win32api/winfunc.h#452">452</a> #define <a href="/lxr/ident?i=MB_MISCMASK">MB_MISCMASK</a>                 0x0000C000L
+<a name=453 href="/lxr/source/cint/lib/win32api/winfunc.h#453">453</a> 
+<a name=454 href="/lxr/source/cint/lib/win32api/winfunc.h#454">454</a> 
+<a name=455 href="/lxr/source/cint/lib/win32api/winfunc.h#455">455</a> <b><i>/**************** wingdi.h ****************/</i></b>
+<a name=456 href="/lxr/source/cint/lib/win32api/winfunc.h#456">456</a> 
+<a name=457 href="/lxr/source/cint/lib/win32api/winfunc.h#457">457</a> #define <a href="/lxr/ident?i=CLR_INVALID">CLR_INVALID</a>     0xFFFFFFFF
+<a name=458 href="/lxr/source/cint/lib/win32api/winfunc.h#458">458</a> 
+<a name=459 href="/lxr/source/cint/lib/win32api/winfunc.h#459">459</a> <b><i>/* Brush Styles */</i></b>
+<a name=460 href="/lxr/source/cint/lib/win32api/winfunc.h#460">460</a> #define <a href="/lxr/ident?i=BS_SOLID">BS_SOLID</a>            0
+<a name=461 href="/lxr/source/cint/lib/win32api/winfunc.h#461">461</a> #define <a href="/lxr/ident?i=BS_NULL">BS_NULL</a>             1
+<a name=462 href="/lxr/source/cint/lib/win32api/winfunc.h#462">462</a> #define <a href="/lxr/ident?i=BS_HOLLOW">BS_HOLLOW</a>           <a href="/lxr/ident?i=BS_NULL">BS_NULL</a>
+<a name=463 href="/lxr/source/cint/lib/win32api/winfunc.h#463">463</a> #define <a href="/lxr/ident?i=BS_HATCHED">BS_HATCHED</a>          2
+<a name=464 href="/lxr/source/cint/lib/win32api/winfunc.h#464">464</a> #define <a href="/lxr/ident?i=BS_PATTERN">BS_PATTERN</a>          3
+<a name=465 href="/lxr/source/cint/lib/win32api/winfunc.h#465">465</a> #define <a href="/lxr/ident?i=BS_INDEXED">BS_INDEXED</a>          4
+<a name=466 href="/lxr/source/cint/lib/win32api/winfunc.h#466">466</a> #define <a href="/lxr/ident?i=BS_DIBPATTERN">BS_DIBPATTERN</a>       5
+<a name=467 href="/lxr/source/cint/lib/win32api/winfunc.h#467">467</a> #define <a href="/lxr/ident?i=BS_DIBPATTERNPT">BS_DIBPATTERNPT</a>     6
+<a name=468 href="/lxr/source/cint/lib/win32api/winfunc.h#468">468</a> #define <a href="/lxr/ident?i=BS_PATTERN8X8">BS_PATTERN8X8</a>       7
+<a name=469 href="/lxr/source/cint/lib/win32api/winfunc.h#469">469</a> #define <a href="/lxr/ident?i=BS_DIBPATTERN8X8">BS_DIBPATTERN8X8</a>    8
+<a name=470 href="/lxr/source/cint/lib/win32api/winfunc.h#470">470</a> #define <a href="/lxr/ident?i=BS_MONOPATTERN">BS_MONOPATTERN</a>      9
+<a name=471 href="/lxr/source/cint/lib/win32api/winfunc.h#471">471</a> 
+<a name=472 href="/lxr/source/cint/lib/win32api/winfunc.h#472">472</a> <b><i>/* Hatch Styles */</i></b>
+<a name=473 href="/lxr/source/cint/lib/win32api/winfunc.h#473">473</a> #define <a href="/lxr/ident?i=HS_HORIZONTAL">HS_HORIZONTAL</a>       0       <b><i>/* ----- */</i></b>
+<a name=474 href="/lxr/source/cint/lib/win32api/winfunc.h#474">474</a> #define <a href="/lxr/ident?i=HS_VERTICAL">HS_VERTICAL</a>         1       <b><i>/* ||||| */</i></b>
+<a name=475 href="/lxr/source/cint/lib/win32api/winfunc.h#475">475</a> #define <a href="/lxr/ident?i=HS_FDIAGONAL">HS_FDIAGONAL</a>        2       <b><i>/* \\\\\ */</i></b>
+<a name=476 href="/lxr/source/cint/lib/win32api/winfunc.h#476">476</a> #define <a href="/lxr/ident?i=HS_BDIAGONAL">HS_BDIAGONAL</a>        3       <b><i>/* ///// */</i></b>
+<a name=477 href="/lxr/source/cint/lib/win32api/winfunc.h#477">477</a> #define <a href="/lxr/ident?i=HS_CROSS">HS_CROSS</a>            4       <b><i>/* +++++ */</i></b>
+<a name=478 href="/lxr/source/cint/lib/win32api/winfunc.h#478">478</a> #define <a href="/lxr/ident?i=HS_DIAGCROSS">HS_DIAGCROSS</a>        5       <b><i>/* xxxxx */</i></b>
+<a name=479 href="/lxr/source/cint/lib/win32api/winfunc.h#479">479</a> 
+<a name=480 href="/lxr/source/cint/lib/win32api/winfunc.h#480">480</a> <b><i>/* Pen Styles */</i></b>
+<a name=481 href="/lxr/source/cint/lib/win32api/winfunc.h#481">481</a> #define <a href="/lxr/ident?i=PS_SOLID">PS_SOLID</a>            0
+<a name=482 href="/lxr/source/cint/lib/win32api/winfunc.h#482">482</a> #define <a href="/lxr/ident?i=PS_DASH">PS_DASH</a>             1       <b><i>/* -------  */</i></b>
+<a name=483 href="/lxr/source/cint/lib/win32api/winfunc.h#483">483</a> #define <a href="/lxr/ident?i=PS_DOT">PS_DOT</a>              2       <b><i>/* .......  */</i></b>
+<a name=484 href="/lxr/source/cint/lib/win32api/winfunc.h#484">484</a> #define <a href="/lxr/ident?i=PS_DASHDOT">PS_DASHDOT</a>          3       <b><i>/* _._._._  */</i></b>
+<a name=485 href="/lxr/source/cint/lib/win32api/winfunc.h#485">485</a> #define <a href="/lxr/ident?i=PS_DASHDOTDOT">PS_DASHDOTDOT</a>       4       <b><i>/* _.._.._  */</i></b>
+<a name=486 href="/lxr/source/cint/lib/win32api/winfunc.h#486">486</a> #define <a href="/lxr/ident?i=PS_NULL">PS_NULL</a>             5
+<a name=487 href="/lxr/source/cint/lib/win32api/winfunc.h#487">487</a> #define <a href="/lxr/ident?i=PS_INSIDEFRAME">PS_INSIDEFRAME</a>      6
+<a name=488 href="/lxr/source/cint/lib/win32api/winfunc.h#488">488</a> #define <a href="/lxr/ident?i=PS_USERSTYLE">PS_USERSTYLE</a>        7
+<a name=489 href="/lxr/source/cint/lib/win32api/winfunc.h#489">489</a> #define <a href="/lxr/ident?i=PS_ALTERNATE">PS_ALTERNATE</a>        8
+<a name=490 href="/lxr/source/cint/lib/win32api/winfunc.h#490">490</a> #define <a href="/lxr/ident?i=PS_STYLE_MASK">PS_STYLE_MASK</a>       0x0000000F
+<a name=491 href="/lxr/source/cint/lib/win32api/winfunc.h#491">491</a> 
+<a name=492 href="/lxr/source/cint/lib/win32api/winfunc.h#492">492</a> #define <a href="/lxr/ident?i=PS_ENDCAP_ROUND">PS_ENDCAP_ROUND</a>     0x00000000
+<a name=493 href="/lxr/source/cint/lib/win32api/winfunc.h#493">493</a> #define <a href="/lxr/ident?i=PS_ENDCAP_SQUARE">PS_ENDCAP_SQUARE</a>    0x00000100
+<a name=494 href="/lxr/source/cint/lib/win32api/winfunc.h#494">494</a> #define <a href="/lxr/ident?i=PS_ENDCAP_FLAT">PS_ENDCAP_FLAT</a>      0x00000200
+<a name=495 href="/lxr/source/cint/lib/win32api/winfunc.h#495">495</a> #define <a href="/lxr/ident?i=PS_ENDCAP_MASK">PS_ENDCAP_MASK</a>      0x00000F00
+<a name=496 href="/lxr/source/cint/lib/win32api/winfunc.h#496">496</a> 
+<a name=497 href="/lxr/source/cint/lib/win32api/winfunc.h#497">497</a> #define <a href="/lxr/ident?i=PS_JOIN_ROUND">PS_JOIN_ROUND</a>       0x00000000
+<a name=498 href="/lxr/source/cint/lib/win32api/winfunc.h#498">498</a> #define <a href="/lxr/ident?i=PS_JOIN_BEVEL">PS_JOIN_BEVEL</a>       0x00001000
+<a name=499 href="/lxr/source/cint/lib/win32api/winfunc.h#499">499</a> #define <a href="/lxr/ident?i=PS_JOIN_MITER">PS_JOIN_MITER</a>       0x00002000
+<a name=500 href="/lxr/source/cint/lib/win32api/winfunc.h#500">500</a> #define <a href="/lxr/ident?i=PS_JOIN_MASK">PS_JOIN_MASK</a>        0x0000F000
+<a name=501 href="/lxr/source/cint/lib/win32api/winfunc.h#501">501</a> 
+<a name=502 href="/lxr/source/cint/lib/win32api/winfunc.h#502">502</a> #define <a href="/lxr/ident?i=PS_COSMETIC">PS_COSMETIC</a>         0x00000000
+<a name=503 href="/lxr/source/cint/lib/win32api/winfunc.h#503">503</a> #define <a href="/lxr/ident?i=PS_GEOMETRIC">PS_GEOMETRIC</a>        0x00010000
+<a name=504 href="/lxr/source/cint/lib/win32api/winfunc.h#504">504</a> #define <a href="/lxr/ident?i=PS_TYPE_MASK">PS_TYPE_MASK</a>        0x000F0000
+<a name=505 href="/lxr/source/cint/lib/win32api/winfunc.h#505">505</a> 
+<a name=506 href="/lxr/source/cint/lib/win32api/winfunc.h#506">506</a> #define <a href="/lxr/ident?i=AD_COUNTERCLOCKWISE">AD_COUNTERCLOCKWISE</a> 1
+<a name=507 href="/lxr/source/cint/lib/win32api/winfunc.h#507">507</a> #define <a href="/lxr/ident?i=AD_CLOCKWISE">AD_CLOCKWISE</a>        2
+<a name=508 href="/lxr/source/cint/lib/win32api/winfunc.h#508">508</a> 
+<a name=509 href="/lxr/source/cint/lib/win32api/winfunc.h#509">509</a> <b><i>/* Device Parameters for GetDeviceCaps() */</i></b>
+<a name=510 href="/lxr/source/cint/lib/win32api/winfunc.h#510">510</a> #define <a href="/lxr/ident?i=DRIVERVERSION">DRIVERVERSION</a> 0     <b><i>/* Device driver version                    */</i></b>
+<a name=511 href="/lxr/source/cint/lib/win32api/winfunc.h#511">511</a> #define <a href="/lxr/ident?i=TECHNOLOGY">TECHNOLOGY</a>    2     <b><i>/* Device classification                    */</i></b>
+<a name=512 href="/lxr/source/cint/lib/win32api/winfunc.h#512">512</a> #define <a href="/lxr/ident?i=HORZSIZE">HORZSIZE</a>      4     <b><i>/* Horizontal size in millimeters           */</i></b>
+<a name=513 href="/lxr/source/cint/lib/win32api/winfunc.h#513">513</a> #define <a href="/lxr/ident?i=VERTSIZE">VERTSIZE</a>      6     <b><i>/* Vertical size in millimeters             */</i></b>
+<a name=514 href="/lxr/source/cint/lib/win32api/winfunc.h#514">514</a> #define <a href="/lxr/ident?i=HORZRES">HORZRES</a>       8     <b><i>/* Horizontal width in pixels               */</i></b>
+<a name=515 href="/lxr/source/cint/lib/win32api/winfunc.h#515">515</a> #define <a href="/lxr/ident?i=VERTRES">VERTRES</a>       10    <b><i>/* Vertical height in pixels                */</i></b>
+<a name=516 href="/lxr/source/cint/lib/win32api/winfunc.h#516">516</a> #define <a href="/lxr/ident?i=BITSPIXEL">BITSPIXEL</a>     12    <b><i>/* Number of bits per pixel                 */</i></b>
+<a name=517 href="/lxr/source/cint/lib/win32api/winfunc.h#517">517</a> #define <a href="/lxr/ident?i=PLANES">PLANES</a>        14    <b><i>/* Number of planes                         */</i></b>
+<a name=518 href="/lxr/source/cint/lib/win32api/winfunc.h#518">518</a> #define <a href="/lxr/ident?i=NUMBRUSHES">NUMBRUSHES</a>    16    <b><i>/* Number of brushes the device has         */</i></b>
+<a name=519 href="/lxr/source/cint/lib/win32api/winfunc.h#519">519</a> #define <a href="/lxr/ident?i=NUMPENS">NUMPENS</a>       18    <b><i>/* Number of pens the device has            */</i></b>
+<a name=520 href="/lxr/source/cint/lib/win32api/winfunc.h#520">520</a> #define <a href="/lxr/ident?i=NUMMARKERS">NUMMARKERS</a>    20    <b><i>/* Number of markers the device has         */</i></b>
+<a name=521 href="/lxr/source/cint/lib/win32api/winfunc.h#521">521</a> #define <a href="/lxr/ident?i=NUMFONTS">NUMFONTS</a>      22    <b><i>/* Number of fonts the device has           */</i></b>
+<a name=522 href="/lxr/source/cint/lib/win32api/winfunc.h#522">522</a> #define <a href="/lxr/ident?i=NUMCOLORS">NUMCOLORS</a>     24    <b><i>/* Number of colors the device supports     */</i></b>
+<a name=523 href="/lxr/source/cint/lib/win32api/winfunc.h#523">523</a> #define <a href="/lxr/ident?i=PDEVICESIZE">PDEVICESIZE</a>   26    <b><i>/* Size required for device descriptor      */</i></b>
+<a name=524 href="/lxr/source/cint/lib/win32api/winfunc.h#524">524</a> #define <a href="/lxr/ident?i=CURVECAPS">CURVECAPS</a>     28    <b><i>/* Curve capabilities                       */</i></b>
+<a name=525 href="/lxr/source/cint/lib/win32api/winfunc.h#525">525</a> #define <a href="/lxr/ident?i=LINECAPS">LINECAPS</a>      30    <b><i>/* Line capabilities                        */</i></b>
+<a name=526 href="/lxr/source/cint/lib/win32api/winfunc.h#526">526</a> #define <a href="/lxr/ident?i=POLYGONALCAPS">POLYGONALCAPS</a> 32    <b><i>/* Polygonal capabilities                   */</i></b>
+<a name=527 href="/lxr/source/cint/lib/win32api/winfunc.h#527">527</a> #define <a href="/lxr/ident?i=TEXTCAPS">TEXTCAPS</a>      34    <b><i>/* Text capabilities                        */</i></b>
+<a name=528 href="/lxr/source/cint/lib/win32api/winfunc.h#528">528</a> #define <a href="/lxr/ident?i=CLIPCAPS">CLIPCAPS</a>      36    <b><i>/* Clipping capabilities                    */</i></b>
+<a name=529 href="/lxr/source/cint/lib/win32api/winfunc.h#529">529</a> #define <a href="/lxr/ident?i=RASTERCAPS">RASTERCAPS</a>    38    <b><i>/* Bitblt capabilities                      */</i></b>
+<a name=530 href="/lxr/source/cint/lib/win32api/winfunc.h#530">530</a> #define <a href="/lxr/ident?i=ASPECTX">ASPECTX</a>       40    <b><i>/* Length of the X leg                      */</i></b>
+<a name=531 href="/lxr/source/cint/lib/win32api/winfunc.h#531">531</a> #define <a href="/lxr/ident?i=ASPECTY">ASPECTY</a>       42    <b><i>/* Length of the Y leg                      */</i></b>
+<a name=532 href="/lxr/source/cint/lib/win32api/winfunc.h#532">532</a> #define <a href="/lxr/ident?i=ASPECTXY">ASPECTXY</a>      44    <b><i>/* Length of the hypotenuse                 */</i></b>
+<a name=533 href="/lxr/source/cint/lib/win32api/winfunc.h#533">533</a> 
+<a name=534 href="/lxr/source/cint/lib/win32api/winfunc.h#534">534</a> <b><i>/* Background Modes */</i></b>
+<a name=535 href="/lxr/source/cint/lib/win32api/winfunc.h#535">535</a> #define <a href="/lxr/ident?i=TRANSPARENT">TRANSPARENT</a>         1
+<a name=536 href="/lxr/source/cint/lib/win32api/winfunc.h#536">536</a> #define <a href="/lxr/ident?i=OPAQUE">OPAQUE</a>              2
+<a name=537 href="/lxr/source/cint/lib/win32api/winfunc.h#537">537</a> #define <a href="/lxr/ident?i=BKMODE_LAST">BKMODE_LAST</a>         2
+<a name=538 href="/lxr/source/cint/lib/win32api/winfunc.h#538">538</a> 
+<a name=539 href="/lxr/source/cint/lib/win32api/winfunc.h#539">539</a> <b><i>/* Graphics Modes */</i></b>
+<a name=540 href="/lxr/source/cint/lib/win32api/winfunc.h#540">540</a> 
+<a name=541 href="/lxr/source/cint/lib/win32api/winfunc.h#541">541</a> #define <a href="/lxr/ident?i=GM_COMPATIBLE">GM_COMPATIBLE</a>       1
+<a name=542 href="/lxr/source/cint/lib/win32api/winfunc.h#542">542</a> #define <a href="/lxr/ident?i=GM_ADVANCED">GM_ADVANCED</a>         2
+<a name=543 href="/lxr/source/cint/lib/win32api/winfunc.h#543">543</a> #define <a href="/lxr/ident?i=GM_LAST">GM_LAST</a>             2
+<a name=544 href="/lxr/source/cint/lib/win32api/winfunc.h#544">544</a> 
+<a name=545 href="/lxr/source/cint/lib/win32api/winfunc.h#545">545</a> <b><i>/* PolyDraw and GetPath point types */</i></b>
+<a name=546 href="/lxr/source/cint/lib/win32api/winfunc.h#546">546</a> #define <a href="/lxr/ident?i=PT_CLOSEFIGURE">PT_CLOSEFIGURE</a>      0x01
+<a name=547 href="/lxr/source/cint/lib/win32api/winfunc.h#547">547</a> #define <a href="/lxr/ident?i=PT_LINETO">PT_LINETO</a>           0x02
+<a name=548 href="/lxr/source/cint/lib/win32api/winfunc.h#548">548</a> #define <a href="/lxr/ident?i=PT_BEZIERTO">PT_BEZIERTO</a>         0x04
+<a name=549 href="/lxr/source/cint/lib/win32api/winfunc.h#549">549</a> #define <a href="/lxr/ident?i=PT_MOVETO">PT_MOVETO</a>           0x06
+<a name=550 href="/lxr/source/cint/lib/win32api/winfunc.h#550">550</a> 
+<a name=551 href="/lxr/source/cint/lib/win32api/winfunc.h#551">551</a> <b><i>/* Mapping Modes */</i></b>
+<a name=552 href="/lxr/source/cint/lib/win32api/winfunc.h#552">552</a> #define <a href="/lxr/ident?i=MM_TEXT">MM_TEXT</a>             1
+<a name=553 href="/lxr/source/cint/lib/win32api/winfunc.h#553">553</a> #define <a href="/lxr/ident?i=MM_LOMETRIC">MM_LOMETRIC</a>         2
+<a name=554 href="/lxr/source/cint/lib/win32api/winfunc.h#554">554</a> #define <a href="/lxr/ident?i=MM_HIMETRIC">MM_HIMETRIC</a>         3
+<a name=555 href="/lxr/source/cint/lib/win32api/winfunc.h#555">555</a> #define <a href="/lxr/ident?i=MM_LOENGLISH">MM_LOENGLISH</a>        4
+<a name=556 href="/lxr/source/cint/lib/win32api/winfunc.h#556">556</a> #define <a href="/lxr/ident?i=MM_HIENGLISH">MM_HIENGLISH</a>        5
+<a name=557 href="/lxr/source/cint/lib/win32api/winfunc.h#557">557</a> #define <a href="/lxr/ident?i=MM_TWIPS">MM_TWIPS</a>            6
+<a name=558 href="/lxr/source/cint/lib/win32api/winfunc.h#558">558</a> #define <a href="/lxr/ident?i=MM_ISOTROPIC">MM_ISOTROPIC</a>        7
+<a name=559 href="/lxr/source/cint/lib/win32api/winfunc.h#559">559</a> #define <a href="/lxr/ident?i=MM_ANISOTROPIC">MM_ANISOTROPIC</a>      8
+<a name=560 href="/lxr/source/cint/lib/win32api/winfunc.h#560">560</a> 
+<a name=561 href="/lxr/source/cint/lib/win32api/winfunc.h#561">561</a> <b><i>/* Min and Max Mapping Mode values */</i></b>
+<a name=562 href="/lxr/source/cint/lib/win32api/winfunc.h#562">562</a> #define <a href="/lxr/ident?i=MM_MIN">MM_MIN</a>              <a href="/lxr/ident?i=MM_TEXT">MM_TEXT</a>
+<a name=563 href="/lxr/source/cint/lib/win32api/winfunc.h#563">563</a> #define <a href="/lxr/ident?i=MM_MAX">MM_MAX</a>              <a href="/lxr/ident?i=MM_ANISOTROPIC">MM_ANISOTROPIC</a>
+<a name=564 href="/lxr/source/cint/lib/win32api/winfunc.h#564">564</a> #define <a href="/lxr/ident?i=MM_MAX_FIXEDSCALE">MM_MAX_FIXEDSCALE</a>   <a href="/lxr/ident?i=MM_TWIPS">MM_TWIPS</a>
+<a name=565 href="/lxr/source/cint/lib/win32api/winfunc.h#565">565</a> 
+<a name=566 href="/lxr/source/cint/lib/win32api/winfunc.h#566">566</a> <b><i>/* Coordinate Modes */</i></b>
+<a name=567 href="/lxr/source/cint/lib/win32api/winfunc.h#567">567</a> #define <a href="/lxr/ident?i=ABSOLUTE">ABSOLUTE</a>            1
+<a name=568 href="/lxr/source/cint/lib/win32api/winfunc.h#568">568</a> #define <a href="/lxr/ident?i=RELATIVE">RELATIVE</a>            2
+<a name=569 href="/lxr/source/cint/lib/win32api/winfunc.h#569">569</a> 
+<a name=570 href="/lxr/source/cint/lib/win32api/winfunc.h#570">570</a> <b><i>/* Stock Logical Objects */</i></b>
+<a name=571 href="/lxr/source/cint/lib/win32api/winfunc.h#571">571</a> #define <a href="/lxr/ident?i=WHITE_BRUSH">WHITE_BRUSH</a>         0
+<a name=572 href="/lxr/source/cint/lib/win32api/winfunc.h#572">572</a> #define <a href="/lxr/ident?i=LTGRAY_BRUSH">LTGRAY_BRUSH</a>        1
+<a name=573 href="/lxr/source/cint/lib/win32api/winfunc.h#573">573</a> #define <a href="/lxr/ident?i=GRAY_BRUSH">GRAY_BRUSH</a>          2
+<a name=574 href="/lxr/source/cint/lib/win32api/winfunc.h#574">574</a> #define <a href="/lxr/ident?i=DKGRAY_BRUSH">DKGRAY_BRUSH</a>        3
+<a name=575 href="/lxr/source/cint/lib/win32api/winfunc.h#575">575</a> #define <a href="/lxr/ident?i=BLACK_BRUSH">BLACK_BRUSH</a>         4
+<a name=576 href="/lxr/source/cint/lib/win32api/winfunc.h#576">576</a> #define <a href="/lxr/ident?i=NULL_BRUSH">NULL_BRUSH</a>          5
+<a name=577 href="/lxr/source/cint/lib/win32api/winfunc.h#577">577</a> #define <a href="/lxr/ident?i=HOLLOW_BRUSH">HOLLOW_BRUSH</a>        <a href="/lxr/ident?i=NULL_BRUSH">NULL_BRUSH</a>
+<a name=578 href="/lxr/source/cint/lib/win32api/winfunc.h#578">578</a> #define <a href="/lxr/ident?i=WHITE_PEN">WHITE_PEN</a>           6
+<a name=579 href="/lxr/source/cint/lib/win32api/winfunc.h#579">579</a> #define <a href="/lxr/ident?i=BLACK_PEN">BLACK_PEN</a>           7
+<a name=580 href="/lxr/source/cint/lib/win32api/winfunc.h#580">580</a> #define <a href="/lxr/ident?i=NULL_PEN">NULL_PEN</a>            8
+<a name=581 href="/lxr/source/cint/lib/win32api/winfunc.h#581">581</a> #define <a href="/lxr/ident?i=OEM_FIXED_FONT">OEM_FIXED_FONT</a>      10
+<a name=582 href="/lxr/source/cint/lib/win32api/winfunc.h#582">582</a> #define <a href="/lxr/ident?i=ANSI_FIXED_FONT">ANSI_FIXED_FONT</a>     11
+<a name=583 href="/lxr/source/cint/lib/win32api/winfunc.h#583">583</a> #define <a href="/lxr/ident?i=ANSI_VAR_FONT">ANSI_VAR_FONT</a>       12
+<a name=584 href="/lxr/source/cint/lib/win32api/winfunc.h#584">584</a> #define <a href="/lxr/ident?i=SYSTEM_FONT">SYSTEM_FONT</a>         13
+<a name=585 href="/lxr/source/cint/lib/win32api/winfunc.h#585">585</a> #define <a href="/lxr/ident?i=DEVICE_DEFAULT_FONT">DEVICE_DEFAULT_FONT</a> 14
+<a name=586 href="/lxr/source/cint/lib/win32api/winfunc.h#586">586</a> #define <a href="/lxr/ident?i=DEFAULT_PALETTE">DEFAULT_PALETTE</a>     15
+<a name=587 href="/lxr/source/cint/lib/win32api/winfunc.h#587">587</a> #define <a href="/lxr/ident?i=SYSTEM_FIXED_FONT">SYSTEM_FIXED_FONT</a>   16
+<a name=588 href="/lxr/source/cint/lib/win32api/winfunc.h#588">588</a> 
+<a name=589 href="/lxr/source/cint/lib/win32api/winfunc.h#589">589</a> 
+<a name=590 href="/lxr/source/cint/lib/win32api/winfunc.h#590">590</a> 
+<a name=591 href="/lxr/source/cint/lib/win32api/winfunc.h#591">591</a> <b><i>/***********************************************************************</i></b>
+<a name=592 href="/lxr/source/cint/lib/win32api/winfunc.h#592">592</a> <b><i>***********************************************************************</i></b>
+<a name=593 href="/lxr/source/cint/lib/win32api/winfunc.h#593">593</a> <b><i>* API FUNCTIONS</i></b>
+<a name=594 href="/lxr/source/cint/lib/win32api/winfunc.h#594">594</a> <b><i>***********************************************************************</i></b>
+<a name=595 href="/lxr/source/cint/lib/win32api/winfunc.h#595">595</a> <b><i>***********************************************************************/</i></b>
+<a name=596 href="/lxr/source/cint/lib/win32api/winfunc.h#596">596</a> 
+<a name=597 href="/lxr/source/cint/lib/win32api/winfunc.h#597">597</a> <b><i>/***********************************************************************</i></b>
+<a name=598 href="/lxr/source/cint/lib/win32api/winfunc.h#598">598</a> <b><i>* DLL </i></b>
+<a name=599 href="/lxr/source/cint/lib/win32api/winfunc.h#599">599</a> <b><i>***********************************************************************/</i></b>
+<a name=600 href="/lxr/source/cint/lib/win32api/winfunc.h#600">600</a> <a href="/lxr/ident?i=HINSTANCE">HINSTANCE</a> <a href="/lxr/ident?i=LoadLibrary">LoadLibrary</a>(LPCSTR lpszLibFileName);
+<a name=601 href="/lxr/source/cint/lib/win32api/winfunc.h#601">601</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=LoadLibrary">LoadLibrary</a>;
+<a name=602 href="/lxr/source/cint/lib/win32api/winfunc.h#602">602</a> 
+<a name=603 href="/lxr/source/cint/lib/win32api/winfunc.h#603">603</a> void <a href="/lxr/ident?i=FreeLibrary">FreeLibrary</a>(<a href="/lxr/ident?i=HINSTANCE">HINSTANCE</a> hinst);
+<a name=604 href="/lxr/source/cint/lib/win32api/winfunc.h#604">604</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FreeLibrary">FreeLibrary</a>;
+<a name=605 href="/lxr/source/cint/lib/win32api/winfunc.h#605">605</a> 
+<a name=606 href="/lxr/source/cint/lib/win32api/winfunc.h#606">606</a> FARPROC <a href="/lxr/ident?i=GetProcAddress">GetProcAddress</a>(<a href="/lxr/ident?i=HINSTANCE">HINSTANCE</a> hinst,LPCSTR lpszProcName);
+<a name=607 href="/lxr/source/cint/lib/win32api/winfunc.h#607">607</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetProcAddress">GetProcAddress</a>;
+<a name=608 href="/lxr/source/cint/lib/win32api/winfunc.h#608">608</a> 
+<a name=609 href="/lxr/source/cint/lib/win32api/winfunc.h#609">609</a> <b><i>/* int GetModuleUsage(HINSTANCE hinst); */</i></b>
+<a name=610 href="/lxr/source/cint/lib/win32api/winfunc.h#610">610</a> <b><i>/* #pragma link C func GetModuleUsage */</i></b>
+<a name=611 href="/lxr/source/cint/lib/win32api/winfunc.h#611">611</a> 
+<a name=612 href="/lxr/source/cint/lib/win32api/winfunc.h#612">612</a> <b><i>/***********************************************************************</i></b>
+<a name=613 href="/lxr/source/cint/lib/win32api/winfunc.h#613">613</a> <b><i>* Environment Variable</i></b>
+<a name=614 href="/lxr/source/cint/lib/win32api/winfunc.h#614">614</a> <b><i>***********************************************************************/</i></b>
+<a name=615 href="/lxr/source/cint/lib/win32api/winfunc.h#615">615</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetEnvironmentVariable">SetEnvironmentVariable</a>(LPCSTR lpName,LPCSTR lpValue);
+<a name=616 href="/lxr/source/cint/lib/win32api/winfunc.h#616">616</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetEnvironmentVariable">SetEnvironmentVariable</a>;
+<a name=617 href="/lxr/source/cint/lib/win32api/winfunc.h#617">617</a> 
+<a name=618 href="/lxr/source/cint/lib/win32api/winfunc.h#618">618</a> <b><i>/***********************************************************************</i></b>
+<a name=619 href="/lxr/source/cint/lib/win32api/winfunc.h#619">619</a> <b><i>* User Info</i></b>
+<a name=620 href="/lxr/source/cint/lib/win32api/winfunc.h#620">620</a> <b><i>***********************************************************************/</i></b>
+<a name=621 href="/lxr/source/cint/lib/win32api/winfunc.h#621">621</a> #ifndef <a href="/lxr/ident?i=G__SYMANTEC">G__SYMANTEC</a>
+<a name=622 href="/lxr/source/cint/lib/win32api/winfunc.h#622">622</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetUserName">GetUserName</a>(LPTSTR lpBuffer,LPDWORD nSize);
+<a name=623 href="/lxr/source/cint/lib/win32api/winfunc.h#623">623</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetUserName">GetUserName</a>;
+<a name=624 href="/lxr/source/cint/lib/win32api/winfunc.h#624">624</a> #endif
+<a name=625 href="/lxr/source/cint/lib/win32api/winfunc.h#625">625</a> 
+<a name=626 href="/lxr/source/cint/lib/win32api/winfunc.h#626">626</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetComputerName">SetComputerName</a>(LPCSTR lpComputerName);
+<a name=627 href="/lxr/source/cint/lib/win32api/winfunc.h#627">627</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetComputerName">SetComputerName</a>;
+<a name=628 href="/lxr/source/cint/lib/win32api/winfunc.h#628">628</a> 
+<a name=629 href="/lxr/source/cint/lib/win32api/winfunc.h#629">629</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetComputerName">GetComputerName</a>(LPTSTR lpBuffer,LPDWORD nSize);
+<a name=630 href="/lxr/source/cint/lib/win32api/winfunc.h#630">630</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetComputerName">GetComputerName</a>;
+<a name=631 href="/lxr/source/cint/lib/win32api/winfunc.h#631">631</a> 
+<a name=632 href="/lxr/source/cint/lib/win32api/winfunc.h#632">632</a> #ifndef <a href="/lxr/ident?i=G__SYMANTEC">G__SYMANTEC</a>
+<a name=633 href="/lxr/source/cint/lib/win32api/winfunc.h#633">633</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=LookupAccountName">LookupAccountName</a>(LPCTSTR lpSystemName,LPCTSTR lpAccountName,PSID Sid
+<a name=634 href="/lxr/source/cint/lib/win32api/winfunc.h#634">634</a>                       ,LPDWORD cbSid,LPTSTR ReferencedDomainName
+<a name=635 href="/lxr/source/cint/lib/win32api/winfunc.h#635">635</a>                       ,LPDWORD cbReferenceDomainName,PSID_NAME_USE peUse);
+<a name=636 href="/lxr/source/cint/lib/win32api/winfunc.h#636">636</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=LookupAccountName">LookupAccountName</a>;
+<a name=637 href="/lxr/source/cint/lib/win32api/winfunc.h#637">637</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class  _SID_NAME_USE;
+<a name=638 href="/lxr/source/cint/lib/win32api/winfunc.h#638">638</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef SID_NAME_USE;
+<a name=639 href="/lxr/source/cint/lib/win32api/winfunc.h#639">639</a> #endif
+<a name=640 href="/lxr/source/cint/lib/win32api/winfunc.h#640">640</a> 
+<a name=641 href="/lxr/source/cint/lib/win32api/winfunc.h#641">641</a> #ifndef <a href="/lxr/ident?i=G__SYMANTEC">G__SYMANTEC</a>
+<a name=642 href="/lxr/source/cint/lib/win32api/winfunc.h#642">642</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=EqualPrefixSid">EqualPrefixSid</a>(PSID pSid1,PSID pSid2);
+<a name=643 href="/lxr/source/cint/lib/win32api/winfunc.h#643">643</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=EqualPrefixSid">EqualPrefixSid</a>;
+<a name=644 href="/lxr/source/cint/lib/win32api/winfunc.h#644">644</a> #endif
+<a name=645 href="/lxr/source/cint/lib/win32api/winfunc.h#645">645</a> 
+<a name=646 href="/lxr/source/cint/lib/win32api/winfunc.h#646">646</a> <b><i>/***********************************************************************</i></b>
+<a name=647 href="/lxr/source/cint/lib/win32api/winfunc.h#647">647</a> <b><i>* Thread</i></b>
+<a name=648 href="/lxr/source/cint/lib/win32api/winfunc.h#648">648</a> <b><i>***********************************************************************/</i></b>
+<a name=649 href="/lxr/source/cint/lib/win32api/winfunc.h#649">649</a> <a href="/lxr/ident?i=HANDLE">HANDLE</a> <a href="/lxr/ident?i=CreateThread">CreateThread</a>(LPSECURITY_ATTRIBUTES lpThreadAttributes,
+<a name=650 href="/lxr/source/cint/lib/win32api/winfunc.h#650">650</a>                     <a href="/lxr/ident?i=DWORD">DWORD</a> dwStackSize,
+<a name=651 href="/lxr/source/cint/lib/win32api/winfunc.h#651">651</a>                     LPTHREAD_START_ROUTINE lpStartAddress,
+<a name=652 href="/lxr/source/cint/lib/win32api/winfunc.h#652">652</a>                     LPVOID lpParameter,
+<a name=653 href="/lxr/source/cint/lib/win32api/winfunc.h#653">653</a>                     <a href="/lxr/ident?i=DWORD">DWORD</a> dwCreationFlags,
+<a name=654 href="/lxr/source/cint/lib/win32api/winfunc.h#654">654</a>                     LPDWORD lpThreadId
+<a name=655 href="/lxr/source/cint/lib/win32api/winfunc.h#655">655</a>                     );
+<a name=656 href="/lxr/source/cint/lib/win32api/winfunc.h#656">656</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CreateThread">CreateThread</a>;
+<a name=657 href="/lxr/source/cint/lib/win32api/winfunc.h#657">657</a> 
+<a name=658 href="/lxr/source/cint/lib/win32api/winfunc.h#658">658</a> <b><i>// BOOL SwitchToThread();</i></b>
+<a name=659 href="/lxr/source/cint/lib/win32api/winfunc.h#659">659</a> <b><i></i></b><b><i>// #pragma link C func SwitchToThread;</i></b>
+<a name=660 href="/lxr/source/cint/lib/win32api/winfunc.h#660">660</a> <b><i></i></b>
+<a name=661 href="/lxr/source/cint/lib/win32api/winfunc.h#661">661</a> <b><i>// HANDLE GetCurentThread();</i></b>
+<a name=662 href="/lxr/source/cint/lib/win32api/winfunc.h#662">662</a> <b><i></i></b><b><i>// #pragma link C func GetCurrentThread;</i></b>
+<a name=663 href="/lxr/source/cint/lib/win32api/winfunc.h#663">663</a> <b><i></i></b>
+<a name=664 href="/lxr/source/cint/lib/win32api/winfunc.h#664">664</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetCurrentThreadId">GetCurrentThreadId</a>();
+<a name=665 href="/lxr/source/cint/lib/win32api/winfunc.h#665">665</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetCurrentThreadId">GetCurrentThreadId</a>;
+<a name=666 href="/lxr/source/cint/lib/win32api/winfunc.h#666">666</a> 
+<a name=667 href="/lxr/source/cint/lib/win32api/winfunc.h#667">667</a> <a href="/lxr/ident?i=VOID">VOID</a> <a href="/lxr/ident?i=InitializeCriticalSection">InitializeCriticalSection</a>(<a href="/lxr/ident?i=LPCRITICAL_SECTION">LPCRITICAL_SECTION</a> lpCriticalSection);
+<a name=668 href="/lxr/source/cint/lib/win32api/winfunc.h#668">668</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=InitializeCriticalSection">InitializeCriticalSection</a>;
+<a name=669 href="/lxr/source/cint/lib/win32api/winfunc.h#669">669</a> 
+<a name=670 href="/lxr/source/cint/lib/win32api/winfunc.h#670">670</a> <a href="/lxr/ident?i=VOID">VOID</a> <a href="/lxr/ident?i=EnterCriticalSection">EnterCriticalSection</a>(<a href="/lxr/ident?i=LPCRITICAL_SECTION">LPCRITICAL_SECTION</a> lpCriticalSection);
+<a name=671 href="/lxr/source/cint/lib/win32api/winfunc.h#671">671</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=EnterCriticalSection">EnterCriticalSection</a>;
+<a name=672 href="/lxr/source/cint/lib/win32api/winfunc.h#672">672</a> 
+<a name=673 href="/lxr/source/cint/lib/win32api/winfunc.h#673">673</a> <a href="/lxr/ident?i=VOID">VOID</a> <a href="/lxr/ident?i=LeaveCriticalSection">LeaveCriticalSection</a>(<a href="/lxr/ident?i=LPCRITICAL_SECTION">LPCRITICAL_SECTION</a> lpCriticalSection);
+<a name=674 href="/lxr/source/cint/lib/win32api/winfunc.h#674">674</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=LeaveCriticalSection">LeaveCriticalSection</a>;
+<a name=675 href="/lxr/source/cint/lib/win32api/winfunc.h#675">675</a> 
+<a name=676 href="/lxr/source/cint/lib/win32api/winfunc.h#676">676</a> <b><i>//BOOL TryEnterCriticalSection(LPCRITICAL_SECTION lpCriticalSection);</i></b>
+<a name=677 href="/lxr/source/cint/lib/win32api/winfunc.h#677">677</a> <b><i></i></b><b><i>//#pragma link C func TryEnterCriticalSection;</i></b>
+<a name=678 href="/lxr/source/cint/lib/win32api/winfunc.h#678">678</a> <b><i></i></b>
+<a name=679 href="/lxr/source/cint/lib/win32api/winfunc.h#679">679</a> <a href="/lxr/ident?i=VOID">VOID</a> <a href="/lxr/ident?i=DeleteCriticalSection">DeleteCriticalSection</a>(<a href="/lxr/ident?i=LPCRITICAL_SECTION">LPCRITICAL_SECTION</a> lpCriticalSection);
+<a name=680 href="/lxr/source/cint/lib/win32api/winfunc.h#680">680</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=DeleteCriticalSection">DeleteCriticalSection</a>;
+<a name=681 href="/lxr/source/cint/lib/win32api/winfunc.h#681">681</a> 
+<a name=682 href="/lxr/source/cint/lib/win32api/winfunc.h#682">682</a> <b><i>/***********************************************************************</i></b>
+<a name=683 href="/lxr/source/cint/lib/win32api/winfunc.h#683">683</a> <b><i>* File</i></b>
+<a name=684 href="/lxr/source/cint/lib/win32api/winfunc.h#684">684</a> <b><i>***********************************************************************/</i></b>
+<a name=685 href="/lxr/source/cint/lib/win32api/winfunc.h#685">685</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=CopyFile">CopyFile</a>(LPCTSTR lpExistingFileName,LPCTSTR lpNewFileName
+<a name=686 href="/lxr/source/cint/lib/win32api/winfunc.h#686">686</a>               ,<a href="/lxr/ident?i=BOOL">BOOL</a> bFailIfExists);
+<a name=687 href="/lxr/source/cint/lib/win32api/winfunc.h#687">687</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CopyFile">CopyFile</a>;
+<a name=688 href="/lxr/source/cint/lib/win32api/winfunc.h#688">688</a> 
+<a name=689 href="/lxr/source/cint/lib/win32api/winfunc.h#689">689</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetCurrentDirectory">GetCurrentDirectory</a>(<a href="/lxr/ident?i=DWORD">DWORD</a> nBufferLength,LPTSTR lpBuffer);
+<a name=690 href="/lxr/source/cint/lib/win32api/winfunc.h#690">690</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetCurrentDirectory">GetCurrentDirectory</a>;
+<a name=691 href="/lxr/source/cint/lib/win32api/winfunc.h#691">691</a> 
+<a name=692 href="/lxr/source/cint/lib/win32api/winfunc.h#692">692</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetCurrentDirectory">SetCurrentDirectory</a>(LPCSTR lpPathName);
+<a name=693 href="/lxr/source/cint/lib/win32api/winfunc.h#693">693</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetCurrentDirectory">SetCurrentDirectory</a>;
+<a name=694 href="/lxr/source/cint/lib/win32api/winfunc.h#694">694</a> 
+<a name=695 href="/lxr/source/cint/lib/win32api/winfunc.h#695">695</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetDiskFreeSpace">GetDiskFreeSpace</a>(LPCTSTR lpRootPathName,LPDWORD lpSectorsPerCluster
+<a name=696 href="/lxr/source/cint/lib/win32api/winfunc.h#696">696</a>                       ,LPDWORD lpByteperSector,LPDWORD lpNumberOfFreeClusters
+<a name=697 href="/lxr/source/cint/lib/win32api/winfunc.h#697">697</a>                       ,LPDWORD lpTotalNumberOfClusters);
+<a name=698 href="/lxr/source/cint/lib/win32api/winfunc.h#698">698</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetDiskFreeSpace">GetDiskFreeSpace</a>;
+<a name=699 href="/lxr/source/cint/lib/win32api/winfunc.h#699">699</a> 
+<a name=700 href="/lxr/source/cint/lib/win32api/winfunc.h#700">700</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetFileAttributes">GetFileAttributes</a>(LPCTSTR lpFileName);
+<a name=701 href="/lxr/source/cint/lib/win32api/winfunc.h#701">701</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetFileAttributes">GetFileAttributes</a>;
+<a name=702 href="/lxr/source/cint/lib/win32api/winfunc.h#702">702</a> 
+<a name=703 href="/lxr/source/cint/lib/win32api/winfunc.h#703">703</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetFileSize">GetFileSize</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,LPDWORD lpFleSizeHigh);
+<a name=704 href="/lxr/source/cint/lib/win32api/winfunc.h#704">704</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetFileSize">GetFileSize</a>;
+<a name=705 href="/lxr/source/cint/lib/win32api/winfunc.h#705">705</a> 
+<a name=706 href="/lxr/source/cint/lib/win32api/winfunc.h#706">706</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetFileType">GetFileType</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile);
+<a name=707 href="/lxr/source/cint/lib/win32api/winfunc.h#707">707</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetFileType">GetFileType</a>;
+<a name=708 href="/lxr/source/cint/lib/win32api/winfunc.h#708">708</a> 
+<a name=709 href="/lxr/source/cint/lib/win32api/winfunc.h#709">709</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetFullPathName">GetFullPathName</a>(LPCTSTR lpFileName,<a href="/lxr/ident?i=DWORD">DWORD</a> nBufferLength,LPTSTR lpBuffer
+<a name=710 href="/lxr/source/cint/lib/win32api/winfunc.h#710">710</a>                       ,LPTSTR *lpFilePart);
+<a name=711 href="/lxr/source/cint/lib/win32api/winfunc.h#711">711</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetFullPathName">GetFullPathName</a>;
+<a name=712 href="/lxr/source/cint/lib/win32api/winfunc.h#712">712</a> 
+<a name=713 href="/lxr/source/cint/lib/win32api/winfunc.h#713">713</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=LockFile">LockFile</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,<a href="/lxr/ident?i=DWORD">DWORD</a> dwFileOffsetLow,<a href="/lxr/ident?i=DWORD">DWORD</a> dwFileOffsetHigh
+<a name=714 href="/lxr/source/cint/lib/win32api/winfunc.h#714">714</a>               ,<a href="/lxr/ident?i=DWORD">DWORD</a> nNumberofBytesToLockLow,<a href="/lxr/ident?i=DWORD">DWORD</a> nNumberOfBytesTOLockHigh);
+<a name=715 href="/lxr/source/cint/lib/win32api/winfunc.h#715">715</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=LockFile">LockFile</a>;
+<a name=716 href="/lxr/source/cint/lib/win32api/winfunc.h#716">716</a> 
+<a name=717 href="/lxr/source/cint/lib/win32api/winfunc.h#717">717</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=MoveFile">MoveFile</a>(LPCTSTR lpExistingFileName,LPCTSTR lpNewFileName);
+<a name=718 href="/lxr/source/cint/lib/win32api/winfunc.h#718">718</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=MoveFile">MoveFile</a>;
+<a name=719 href="/lxr/source/cint/lib/win32api/winfunc.h#719">719</a> 
+<a name=720 href="/lxr/source/cint/lib/win32api/winfunc.h#720">720</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=ReadFile">ReadFile</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,LPVOID lpBuffer,<a href="/lxr/ident?i=DWORD">DWORD</a> nNumberOfBytesToRead
+<a name=721 href="/lxr/source/cint/lib/win32api/winfunc.h#721">721</a>               ,LPDWORD lpNumberOfBytesRead,LPOVERLAPPED lpOverlapped);
+<a name=722 href="/lxr/source/cint/lib/win32api/winfunc.h#722">722</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ReadFile">ReadFile</a>;
+<a name=723 href="/lxr/source/cint/lib/win32api/winfunc.h#723">723</a> 
+<a name=724 href="/lxr/source/cint/lib/win32api/winfunc.h#724">724</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=RemoveDirectory">RemoveDirectory</a>(LPCTSTR lpPathName);
+<a name=725 href="/lxr/source/cint/lib/win32api/winfunc.h#725">725</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=RemoveDirectory">RemoveDirectory</a>;
+<a name=726 href="/lxr/source/cint/lib/win32api/winfunc.h#726">726</a> 
+<a name=727 href="/lxr/source/cint/lib/win32api/winfunc.h#727">727</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=CreateDirectory">CreateDirectory</a>(LPCSTR lpPathName,LPVOID lpSecurityAttributes);
+<a name=728 href="/lxr/source/cint/lib/win32api/winfunc.h#728">728</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CreateDirectory">CreateDirectory</a>;
+<a name=729 href="/lxr/source/cint/lib/win32api/winfunc.h#729">729</a> 
+<a name=730 href="/lxr/source/cint/lib/win32api/winfunc.h#730">730</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=WriteFile">WriteFile</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,LPCVOID lpBuffer,<a href="/lxr/ident?i=DWORD">DWORD</a> nNumberOfBytesToWrite,LPDWORD lpNumberOfBytesWritten,LPOVERLAPPED lpOverlapped);
+<a name=731 href="/lxr/source/cint/lib/win32api/winfunc.h#731">731</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=WriteFile">WriteFile</a>;
+<a name=732 href="/lxr/source/cint/lib/win32api/winfunc.h#732">732</a> 
+<a name=733 href="/lxr/source/cint/lib/win32api/winfunc.h#733">733</a> 
+<a name=734 href="/lxr/source/cint/lib/win32api/winfunc.h#734">734</a> <a href="/lxr/ident?i=HANDLE">HANDLE</a> <a href="/lxr/ident?i=FindFirstFile">FindFirstFile</a>(LPCSTR lpFileName, LPWIN32_FIND_DATA lpFindFileData);
+<a name=735 href="/lxr/source/cint/lib/win32api/winfunc.h#735">735</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FindFirstFile">FindFirstFile</a>;
+<a name=736 href="/lxr/source/cint/lib/win32api/winfunc.h#736">736</a> 
+<a name=737 href="/lxr/source/cint/lib/win32api/winfunc.h#737">737</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=FindNextFile">FindNextFile</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFindFile, LPWIN32_FIND_DATA lpFindFileData);
+<a name=738 href="/lxr/source/cint/lib/win32api/winfunc.h#738">738</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FindNextFile">FindNextFile</a>;
+<a name=739 href="/lxr/source/cint/lib/win32api/winfunc.h#739">739</a> 
+<a name=740 href="/lxr/source/cint/lib/win32api/winfunc.h#740">740</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=FindClose">FindClose</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFindFile);
+<a name=741 href="/lxr/source/cint/lib/win32api/winfunc.h#741">741</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FindClose">FindClose</a>;
+<a name=742 href="/lxr/source/cint/lib/win32api/winfunc.h#742">742</a> 
+<a name=743 href="/lxr/source/cint/lib/win32api/winfunc.h#743">743</a> 
+<a name=744 href="/lxr/source/cint/lib/win32api/winfunc.h#744">744</a> <a href="/lxr/ident?i=LONG">LONG</a> <a href="/lxr/ident?i=CompareFileTime">CompareFileTime</a>(const FILETIME *lpFileTime1, const FILETIME *lpFileTime2);
+<a name=745 href="/lxr/source/cint/lib/win32api/winfunc.h#745">745</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CompareFileTime">CompareFileTime</a>;
+<a name=746 href="/lxr/source/cint/lib/win32api/winfunc.h#746">746</a> 
+<a name=747 href="/lxr/source/cint/lib/win32api/winfunc.h#747">747</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetFileTime">GetFileTime</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile, FILETIME *lpftCreation,
+<a name=748 href="/lxr/source/cint/lib/win32api/winfunc.h#748">748</a>                 FILETIME *lpftLastAccess, FILETIME *lpftLastWrite);
+<a name=749 href="/lxr/source/cint/lib/win32api/winfunc.h#749">749</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetFileTime">GetFileTime</a>;
+<a name=750 href="/lxr/source/cint/lib/win32api/winfunc.h#750">750</a> 
+<a name=751 href="/lxr/source/cint/lib/win32api/winfunc.h#751">751</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetFileTime">SetFileTime</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile, const FILETIME *lpftCreation,
+<a name=752 href="/lxr/source/cint/lib/win32api/winfunc.h#752">752</a>                 const FILETIME *lpftLastAccess,
+<a name=753 href="/lxr/source/cint/lib/win32api/winfunc.h#753">753</a>                 const FILETIME *lpftLastWrite);
+<a name=754 href="/lxr/source/cint/lib/win32api/winfunc.h#754">754</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetFileTime">SetFileTime</a>;
+<a name=755 href="/lxr/source/cint/lib/win32api/winfunc.h#755">755</a> 
+<a name=756 href="/lxr/source/cint/lib/win32api/winfunc.h#756">756</a> <b><i>/* BOOL FIsTask(HTASK hTask); */</i></b>
+<a name=757 href="/lxr/source/cint/lib/win32api/winfunc.h#757">757</a> 
+<a name=758 href="/lxr/source/cint/lib/win32api/winfunc.h#758">758</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=SetFilePointer">SetFilePointer</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile, <a href="/lxr/ident?i=LONG">LONG</a> lDistanceToMove,
+<a name=759 href="/lxr/source/cint/lib/win32api/winfunc.h#759">759</a>                      <a href="/lxr/ident?i=LONG">LONG</a> *lpDistanceToMoveHigh, <a href="/lxr/ident?i=DWORD">DWORD</a> dwMoveMethod);
+<a name=760 href="/lxr/source/cint/lib/win32api/winfunc.h#760">760</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetFilePointer">SetFilePointer</a>;
+<a name=761 href="/lxr/source/cint/lib/win32api/winfunc.h#761">761</a> 
+<a name=762 href="/lxr/source/cint/lib/win32api/winfunc.h#762">762</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetEndOfFile">SetEndOfFile</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile);
+<a name=763 href="/lxr/source/cint/lib/win32api/winfunc.h#763">763</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetEndOfFile">SetEndOfFile</a>;
+<a name=764 href="/lxr/source/cint/lib/win32api/winfunc.h#764">764</a> 
+<a name=765 href="/lxr/source/cint/lib/win32api/winfunc.h#765">765</a> <a href="/lxr/ident?i=UINT">UINT</a> <a href="/lxr/ident?i=GetTempFileName">GetTempFileName</a> (LPCSTR lpPathName, LPCSTR lpPrefixString,
+<a name=766 href="/lxr/source/cint/lib/win32api/winfunc.h#766">766</a>                 <a href="/lxr/ident?i=UINT">UINT</a> uUnique, LPSTR lpTempFileName);
+<a name=767 href="/lxr/source/cint/lib/win32api/winfunc.h#767">767</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetTempFileName">GetTempFileName</a>;
+<a name=768 href="/lxr/source/cint/lib/win32api/winfunc.h#768">768</a> 
+<a name=769 href="/lxr/source/cint/lib/win32api/winfunc.h#769">769</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=DeleteFile">DeleteFile</a>(LPCSTR lpFileName);
+<a name=770 href="/lxr/source/cint/lib/win32api/winfunc.h#770">770</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=DeleteFile">DeleteFile</a>;
+<a name=771 href="/lxr/source/cint/lib/win32api/winfunc.h#771">771</a> 
+<a name=772 href="/lxr/source/cint/lib/win32api/winfunc.h#772">772</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=LocalFileTimeToFileTime">LocalFileTimeToFileTime</a>(const FILETIME *lpLocalFileTime, FILETIME *lpFileTime);
+<a name=773 href="/lxr/source/cint/lib/win32api/winfunc.h#773">773</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=LocalFileTimeToFileTime">LocalFileTimeToFileTime</a>;
+<a name=774 href="/lxr/source/cint/lib/win32api/winfunc.h#774">774</a> 
+<a name=775 href="/lxr/source/cint/lib/win32api/winfunc.h#775">775</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=FileTimeToLocalFileTime">FileTimeToLocalFileTime</a>(const FILETIME *lpFileTime, FILETIME *lpLocalFileTime);
+<a name=776 href="/lxr/source/cint/lib/win32api/winfunc.h#776">776</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FileTimeToLocalFileTime">FileTimeToLocalFileTime</a>;
+<a name=777 href="/lxr/source/cint/lib/win32api/winfunc.h#777">777</a> 
+<a name=778 href="/lxr/source/cint/lib/win32api/winfunc.h#778">778</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=FileTimeToSystemTime">FileTimeToSystemTime</a>(const FILETIME *lpFileTime, SYSTEMTIME *lpSystemTime);
+<a name=779 href="/lxr/source/cint/lib/win32api/winfunc.h#779">779</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FileTimeToSystemTime">FileTimeToSystemTime</a>;
+<a name=780 href="/lxr/source/cint/lib/win32api/winfunc.h#780">780</a> 
+<a name=781 href="/lxr/source/cint/lib/win32api/winfunc.h#781">781</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SystemTimeToFileTime">SystemTimeToFileTime</a>(const SYSTEMTIME *lpSystemTime, FILETIME *lpFileTime);
+<a name=782 href="/lxr/source/cint/lib/win32api/winfunc.h#782">782</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SystemTimeToFileTime">SystemTimeToFileTime</a>;
+<a name=783 href="/lxr/source/cint/lib/win32api/winfunc.h#783">783</a> 
+<a name=784 href="/lxr/source/cint/lib/win32api/winfunc.h#784">784</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetModuleFileName">GetModuleFileName</a>(HMODULE hModule,LPSTR lpFilename,<a href="/lxr/ident?i=DWORD">DWORD</a> nSize);
+<a name=785 href="/lxr/source/cint/lib/win32api/winfunc.h#785">785</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetModuleFileName">GetModuleFileName</a>;
+<a name=786 href="/lxr/source/cint/lib/win32api/winfunc.h#786">786</a> 
+<a name=787 href="/lxr/source/cint/lib/win32api/winfunc.h#787">787</a> #if 0
+<a name=788 href="/lxr/source/cint/lib/win32api/winfunc.h#788">788</a> LPCSTR <a href="/lxr/ident?i=DirName">DirName</a>(LPCSTR lpFilename);
+<a name=789 href="/lxr/source/cint/lib/win32api/winfunc.h#789">789</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=DirName">DirName</a>;
+<a name=790 href="/lxr/source/cint/lib/win32api/winfunc.h#790">790</a> #endif
+<a name=791 href="/lxr/source/cint/lib/win32api/winfunc.h#791">791</a> 
+<a name=792 href="/lxr/source/cint/lib/win32api/winfunc.h#792">792</a> 
+<a name=793 href="/lxr/source/cint/lib/win32api/winfunc.h#793">793</a> <b><i>/***********************************************************************</i></b>
+<a name=794 href="/lxr/source/cint/lib/win32api/winfunc.h#794">794</a> <b><i>* Time</i></b>
+<a name=795 href="/lxr/source/cint/lib/win32api/winfunc.h#795">795</a> <b><i>***********************************************************************/</i></b>
+<a name=796 href="/lxr/source/cint/lib/win32api/winfunc.h#796">796</a> 
+<a name=797 href="/lxr/source/cint/lib/win32api/winfunc.h#797">797</a> void <a href="/lxr/ident?i=GetSystemTime">GetSystemTime</a>(SYSTEMTIME *lpSystemTime);
+<a name=798 href="/lxr/source/cint/lib/win32api/winfunc.h#798">798</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetSystemTime">GetSystemTime</a>;
+<a name=799 href="/lxr/source/cint/lib/win32api/winfunc.h#799">799</a> 
+<a name=800 href="/lxr/source/cint/lib/win32api/winfunc.h#800">800</a> void <a href="/lxr/ident?i=GetLocalTime">GetLocalTime</a>(SYSTEMTIME *);
+<a name=801 href="/lxr/source/cint/lib/win32api/winfunc.h#801">801</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetLocalTime">GetLocalTime</a>;
+<a name=802 href="/lxr/source/cint/lib/win32api/winfunc.h#802">802</a> 
+<a name=803 href="/lxr/source/cint/lib/win32api/winfunc.h#803">803</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetTimeZoneInformation">GetTimeZoneInformation</a>(
+<a name=804 href="/lxr/source/cint/lib/win32api/winfunc.h#804">804</a>                 LPTIME_ZONE_INFORMATION lpTimeZoneInformation);
+<a name=805 href="/lxr/source/cint/lib/win32api/winfunc.h#805">805</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetTimeZoneInformation">GetTimeZoneInformation</a>;
+<a name=806 href="/lxr/source/cint/lib/win32api/winfunc.h#806">806</a> 
+<a name=807 href="/lxr/source/cint/lib/win32api/winfunc.h#807">807</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetTimeZoneInformation">SetTimeZoneInformation</a>(
+<a name=808 href="/lxr/source/cint/lib/win32api/winfunc.h#808">808</a>                 const TIME_ZONE_INFORMATION *lpTimeZoneInformation);
+<a name=809 href="/lxr/source/cint/lib/win32api/winfunc.h#809">809</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetTimeZoneInformation">SetTimeZoneInformation</a>;
+<a name=810 href="/lxr/source/cint/lib/win32api/winfunc.h#810">810</a> 
+<a name=811 href="/lxr/source/cint/lib/win32api/winfunc.h#811">811</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetCurrentProcessId">GetCurrentProcessId</a>(void);
+<a name=812 href="/lxr/source/cint/lib/win32api/winfunc.h#812">812</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetCurrentProcessId">GetCurrentProcessId</a>;
+<a name=813 href="/lxr/source/cint/lib/win32api/winfunc.h#813">813</a> 
+<a name=814 href="/lxr/source/cint/lib/win32api/winfunc.h#814">814</a> <b><i>/***********************************************************************</i></b>
+<a name=815 href="/lxr/source/cint/lib/win32api/winfunc.h#815">815</a> <b><i>* IOCTL </i></b>
+<a name=816 href="/lxr/source/cint/lib/win32api/winfunc.h#816">816</a> <b><i>***********************************************************************/</i></b>
+<a name=817 href="/lxr/source/cint/lib/win32api/winfunc.h#817">817</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=DeviceIoControl">DeviceIoControl</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hDevice,<a href="/lxr/ident?i=DWORD">DWORD</a> dwIoControlCode,LPVOID lpInBuffer,
+<a name=818 href="/lxr/source/cint/lib/win32api/winfunc.h#818">818</a>                      <a href="/lxr/ident?i=DWORD">DWORD</a> nInBufferSize,LPVOID lpOutBuffer,
+<a name=819 href="/lxr/source/cint/lib/win32api/winfunc.h#819">819</a>                      <a href="/lxr/ident?i=DWORD">DWORD</a> nOutBufferSize,LPDWORD lpBytesReturned,
+<a name=820 href="/lxr/source/cint/lib/win32api/winfunc.h#820">820</a>                      LPOVERLAPPED lpOverlapped);
+<a name=821 href="/lxr/source/cint/lib/win32api/winfunc.h#821">821</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=DeviceIoControl">DeviceIoControl</a>;
+<a name=822 href="/lxr/source/cint/lib/win32api/winfunc.h#822">822</a> 
+<a name=823 href="/lxr/source/cint/lib/win32api/winfunc.h#823">823</a> <b><i>/***********************************************************************</i></b>
+<a name=824 href="/lxr/source/cint/lib/win32api/winfunc.h#824">824</a> <b><i>* COMM port</i></b>
+<a name=825 href="/lxr/source/cint/lib/win32api/winfunc.h#825">825</a> <b><i>***********************************************************************/</i></b>
+<a name=826 href="/lxr/source/cint/lib/win32api/winfunc.h#826">826</a> <a href="/lxr/ident?i=HANDLE">HANDLE</a> <a href="/lxr/ident?i=CreateFile">CreateFile</a>(LPCTSTR lpFileName,<a href="/lxr/ident?i=DWORD">DWORD</a> dwDesiredAccess,<a href="/lxr/ident?i=DWORD">DWORD</a> dwShareMode,LPSECURITY_ATTRIBUTES lpSecurityAttributes,<a href="/lxr/ident?i=DWORD">DWORD</a> dwCreationDisposition,<a href="/lxr/ident?i=DWORD">DWORD</a> dwFlagsAndAttributes,<a href="/lxr/ident?i=HANDLE">HANDLE</a> hTemplateFile);
+<a name=827 href="/lxr/source/cint/lib/win32api/winfunc.h#827">827</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CreateFile">CreateFile</a>;
+<a name=828 href="/lxr/source/cint/lib/win32api/winfunc.h#828">828</a> 
+<a name=829 href="/lxr/source/cint/lib/win32api/winfunc.h#829">829</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetCommState">GetCommState</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,LPDCB lpDCB);
+<a name=830 href="/lxr/source/cint/lib/win32api/winfunc.h#830">830</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetCommState">GetCommState</a>;
+<a name=831 href="/lxr/source/cint/lib/win32api/winfunc.h#831">831</a> 
+<a name=832 href="/lxr/source/cint/lib/win32api/winfunc.h#832">832</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetCommState">SetCommState</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,LPDCB lpDCB);
+<a name=833 href="/lxr/source/cint/lib/win32api/winfunc.h#833">833</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetCommState">SetCommState</a>;
+<a name=834 href="/lxr/source/cint/lib/win32api/winfunc.h#834">834</a> 
+<a name=835 href="/lxr/source/cint/lib/win32api/winfunc.h#835">835</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetCommTimeouts">SetCommTimeouts</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,LPCOMMTIMEOUTS lpCommTimeouts);
+<a name=836 href="/lxr/source/cint/lib/win32api/winfunc.h#836">836</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetCommTimeouts">SetCommTimeouts</a>;
+<a name=837 href="/lxr/source/cint/lib/win32api/winfunc.h#837">837</a> 
+<a name=838 href="/lxr/source/cint/lib/win32api/winfunc.h#838">838</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetCommTimeouts">GetCommTimeouts</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,LPCOMMTIMEOUTS lpCommTimeouts);
+<a name=839 href="/lxr/source/cint/lib/win32api/winfunc.h#839">839</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetCommTimeouts">GetCommTimeouts</a>;
+<a name=840 href="/lxr/source/cint/lib/win32api/winfunc.h#840">840</a> 
+<a name=841 href="/lxr/source/cint/lib/win32api/winfunc.h#841">841</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=EscapeCommFunction">EscapeCommFunction</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,<a href="/lxr/ident?i=DWORD">DWORD</a> dwFunc);
+<a name=842 href="/lxr/source/cint/lib/win32api/winfunc.h#842">842</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=EscapeCommFunction">EscapeCommFunction</a>;
+<a name=843 href="/lxr/source/cint/lib/win32api/winfunc.h#843">843</a> 
+<a name=844 href="/lxr/source/cint/lib/win32api/winfunc.h#844">844</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=CloseHandle">CloseHandle</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hObject);
+<a name=845 href="/lxr/source/cint/lib/win32api/winfunc.h#845">845</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CloseHandle">CloseHandle</a>;
+<a name=846 href="/lxr/source/cint/lib/win32api/winfunc.h#846">846</a> 
+<a name=847 href="/lxr/source/cint/lib/win32api/winfunc.h#847">847</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetCommMask">SetCommMask</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,<a href="/lxr/ident?i=DWORD">DWORD</a> dwEvtMask);
+<a name=848 href="/lxr/source/cint/lib/win32api/winfunc.h#848">848</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetCommMask">SetCommMask</a>;
+<a name=849 href="/lxr/source/cint/lib/win32api/winfunc.h#849">849</a> 
+<a name=850 href="/lxr/source/cint/lib/win32api/winfunc.h#850">850</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=WaitCommEvent">WaitCommEvent</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hFile,LPDWORD lpEvMask,LPOVERLAPPED lpOverlapped);
+<a name=851 href="/lxr/source/cint/lib/win32api/winfunc.h#851">851</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=WaitCommEvent">WaitCommEvent</a>;
+<a name=852 href="/lxr/source/cint/lib/win32api/winfunc.h#852">852</a> 
+<a name=853 href="/lxr/source/cint/lib/win32api/winfunc.h#853">853</a> <b><i>/***********************************************************************</i></b>
+<a name=854 href="/lxr/source/cint/lib/win32api/winfunc.h#854">854</a> <b><i>* Event</i></b>
+<a name=855 href="/lxr/source/cint/lib/win32api/winfunc.h#855">855</a> <b><i>***********************************************************************/</i></b>
+<a name=856 href="/lxr/source/cint/lib/win32api/winfunc.h#856">856</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=WaitForSingleObject">WaitForSingleObject</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hHandle,<a href="/lxr/ident?i=DWORD">DWORD</a> dwMilliseconds);
+<a name=857 href="/lxr/source/cint/lib/win32api/winfunc.h#857">857</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=WaitForSingleObject">WaitForSingleObject</a>;
+<a name=858 href="/lxr/source/cint/lib/win32api/winfunc.h#858">858</a> 
+<a name=859 href="/lxr/source/cint/lib/win32api/winfunc.h#859">859</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=WaitForMultipleObjects">WaitForMultipleObjects</a>(<a href="/lxr/ident?i=DWORD">DWORD</a> nCOunt,const <a href="/lxr/ident?i=HANDLE">HANDLE</a>* lpHandles,<a href="/lxr/ident?i=BOOL">BOOL</a> bWaitAll,<a href="/lxr/ident?i=DWORD">DWORD</a> dwMilliseconds);
+<a name=860 href="/lxr/source/cint/lib/win32api/winfunc.h#860">860</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=WaitForMultipleObjects">WaitForMultipleObjects</a>;
+<a name=861 href="/lxr/source/cint/lib/win32api/winfunc.h#861">861</a> 
+<a name=862 href="/lxr/source/cint/lib/win32api/winfunc.h#862">862</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=PulseEvent">PulseEvent</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hEvent);
+<a name=863 href="/lxr/source/cint/lib/win32api/winfunc.h#863">863</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=PulseEvent">PulseEvent</a>;
+<a name=864 href="/lxr/source/cint/lib/win32api/winfunc.h#864">864</a> 
+<a name=865 href="/lxr/source/cint/lib/win32api/winfunc.h#865">865</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=ResetEvent">ResetEvent</a>(<a href="/lxr/ident?i=HANDLE">HANDLE</a> hEvent);
+<a name=866 href="/lxr/source/cint/lib/win32api/winfunc.h#866">866</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ResetEvent">ResetEvent</a>;
+<a name=867 href="/lxr/source/cint/lib/win32api/winfunc.h#867">867</a> 
+<a name=868 href="/lxr/source/cint/lib/win32api/winfunc.h#868">868</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=CreateEvent">CreateEvent</a>(LPSECURITY_ATTRIBUTES lpEventAttributes,<a href="/lxr/ident?i=BOOL">BOOL</a> bManualReset,<a href="/lxr/ident?i=BOOL">BOOL</a> bIniitialState,LPCTSTR lpName);
+<a name=869 href="/lxr/source/cint/lib/win32api/winfunc.h#869">869</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CreateEvent">CreateEvent</a>;
+<a name=870 href="/lxr/source/cint/lib/win32api/winfunc.h#870">870</a> 
+<a name=871 href="/lxr/source/cint/lib/win32api/winfunc.h#871">871</a> <b><i>/***********************************************************************</i></b>
+<a name=872 href="/lxr/source/cint/lib/win32api/winfunc.h#872">872</a> <b><i>* Window</i></b>
+<a name=873 href="/lxr/source/cint/lib/win32api/winfunc.h#873">873</a> <b><i>***********************************************************************/</i></b>
+<a name=874 href="/lxr/source/cint/lib/win32api/winfunc.h#874">874</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=AdjustWindowRect">AdjustWindowRect</a>(<a href="/lxr/ident?i=LPRECT">LPRECT</a> lprc,<a href="/lxr/ident?i=DWORD">DWORD</a> dwStyle,<a href="/lxr/ident?i=BOOL">BOOL</a> fMenu);
+<a name=875 href="/lxr/source/cint/lib/win32api/winfunc.h#875">875</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=AdjustWindowRect">AdjustWindowRect</a>;
+<a name=876 href="/lxr/source/cint/lib/win32api/winfunc.h#876">876</a> 
+<a name=877 href="/lxr/source/cint/lib/win32api/winfunc.h#877">877</a> <a href="/lxr/ident?i=HWND">HWND</a> <a href="/lxr/ident?i=CreateWindow">CreateWindow</a>(LPCTSTR lpszClassName,LPCTSTR lpszWindowName
+<a name=878 href="/lxr/source/cint/lib/win32api/winfunc.h#878">878</a>                   ,<a href="/lxr/ident?i=DWORD">DWORD</a> dwStyle,int <a href="/lxr/ident?i=x">x</a>,int <a href="/lxr/ident?i=y">y</a>,int nWidth,int nHeight
+<a name=879 href="/lxr/source/cint/lib/win32api/winfunc.h#879">879</a>                   ,<a href="/lxr/ident?i=HWND">HWND</a> hwndParent,HMENU hmenu,<a href="/lxr/ident?i=HANDLE">HANDLE</a> hinst,LPVOID lpvParam);
+<a name=880 href="/lxr/source/cint/lib/win32api/winfunc.h#880">880</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CreateWindow">CreateWindow</a>;
+<a name=881 href="/lxr/source/cint/lib/win32api/winfunc.h#881">881</a> 
+<a name=882 href="/lxr/source/cint/lib/win32api/winfunc.h#882">882</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=DestroyWindow">DestroyWindow</a>(<a href="/lxr/ident?i=HWND">HWND</a> <a href="/lxr/ident?i=hwnd">hwnd</a>);
+<a name=883 href="/lxr/source/cint/lib/win32api/winfunc.h#883">883</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=DestroyWindow">DestroyWindow</a>;
+<a name=884 href="/lxr/source/cint/lib/win32api/winfunc.h#884">884</a> 
+<a name=885 href="/lxr/source/cint/lib/win32api/winfunc.h#885">885</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetWindow">GetWindow</a>(<a href="/lxr/ident?i=HWND">HWND</a> hWnd,<a href="/lxr/ident?i=UINT">UINT</a> uCmd);
+<a name=886 href="/lxr/source/cint/lib/win32api/winfunc.h#886">886</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetWindow">GetWindow</a>;
+<a name=887 href="/lxr/source/cint/lib/win32api/winfunc.h#887">887</a> 
+<a name=888 href="/lxr/source/cint/lib/win32api/winfunc.h#888">888</a> int <a href="/lxr/ident?i=GetWindowText">GetWindowText</a>(<a href="/lxr/ident?i=HWND">HWND</a> hWnd,LPTSTR lpString,int nMaxCount);
+<a name=889 href="/lxr/source/cint/lib/win32api/winfunc.h#889">889</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetWindowText">GetWindowText</a>;
+<a name=890 href="/lxr/source/cint/lib/win32api/winfunc.h#890">890</a> 
+<a name=891 href="/lxr/source/cint/lib/win32api/winfunc.h#891">891</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=MoveWindow">MoveWindow</a>(<a href="/lxr/ident?i=HWND">HWND</a> hWnd,int <a href="/lxr/ident?i=X">X</a>,int <a href="/lxr/ident?i=Y">Y</a>,int nWidth,int nHeight,<a href="/lxr/ident?i=BOOL">BOOL</a> bRepaing);
+<a name=892 href="/lxr/source/cint/lib/win32api/winfunc.h#892">892</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=MoveWindow">MoveWindow</a>;
+<a name=893 href="/lxr/source/cint/lib/win32api/winfunc.h#893">893</a> 
+<a name=894 href="/lxr/source/cint/lib/win32api/winfunc.h#894">894</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetWindowText">SetWindowText</a>(<a href="/lxr/ident?i=HWND">HWND</a> hWnd,LPCTSTR lpString);
+<a name=895 href="/lxr/source/cint/lib/win32api/winfunc.h#895">895</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetWindowText">SetWindowText</a>;
+<a name=896 href="/lxr/source/cint/lib/win32api/winfunc.h#896">896</a> 
+<a name=897 href="/lxr/source/cint/lib/win32api/winfunc.h#897">897</a> 
+<a name=898 href="/lxr/source/cint/lib/win32api/winfunc.h#898">898</a> <b><i>/***********************************************************************</i></b>
+<a name=899 href="/lxr/source/cint/lib/win32api/winfunc.h#899">899</a> <b><i>* Caret</i></b>
+<a name=900 href="/lxr/source/cint/lib/win32api/winfunc.h#900">900</a> <b><i>***********************************************************************/</i></b>
+<a name=901 href="/lxr/source/cint/lib/win32api/winfunc.h#901">901</a> void <a href="/lxr/ident?i=CreateCaret">CreateCaret</a>(<a href="/lxr/ident?i=HWND">HWND</a> <a href="/lxr/ident?i=hwnd">hwnd</a>,HBITMAP hbmp,int nWidth,int nHeight);
+<a name=902 href="/lxr/source/cint/lib/win32api/winfunc.h#902">902</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CreateCaret">CreateCaret</a>;
+<a name=903 href="/lxr/source/cint/lib/win32api/winfunc.h#903">903</a> 
+<a name=904 href="/lxr/source/cint/lib/win32api/winfunc.h#904">904</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetCaretPos">GetCaretPos</a>(<a href="/lxr/ident?i=LPPOINT">LPPOINT</a> <a href="/lxr/ident?i=lpPoint">lpPoint</a>);
+<a name=905 href="/lxr/source/cint/lib/win32api/winfunc.h#905">905</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetCaretPos">GetCaretPos</a>;
+<a name=906 href="/lxr/source/cint/lib/win32api/winfunc.h#906">906</a> 
+<a name=907 href="/lxr/source/cint/lib/win32api/winfunc.h#907">907</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=HideCaret">HideCaret</a>(<a href="/lxr/ident?i=HWND">HWND</a> hWnd);
+<a name=908 href="/lxr/source/cint/lib/win32api/winfunc.h#908">908</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=HideCaret">HideCaret</a>;
+<a name=909 href="/lxr/source/cint/lib/win32api/winfunc.h#909">909</a> 
+<a name=910 href="/lxr/source/cint/lib/win32api/winfunc.h#910">910</a> <b><i>/***********************************************************************</i></b>
+<a name=911 href="/lxr/source/cint/lib/win32api/winfunc.h#911">911</a> <b><i>* Clipboard</i></b>
+<a name=912 href="/lxr/source/cint/lib/win32api/winfunc.h#912">912</a> <b><i>***********************************************************************/</i></b>
+<a name=913 href="/lxr/source/cint/lib/win32api/winfunc.h#913">913</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=CloseClipboard">CloseClipboard</a>();
+<a name=914 href="/lxr/source/cint/lib/win32api/winfunc.h#914">914</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CloseClipboard">CloseClipboard</a>;
+<a name=915 href="/lxr/source/cint/lib/win32api/winfunc.h#915">915</a> 
+<a name=916 href="/lxr/source/cint/lib/win32api/winfunc.h#916">916</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=EmptyClipboard">EmptyClipboard</a>();
+<a name=917 href="/lxr/source/cint/lib/win32api/winfunc.h#917">917</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=EmptyClipboard">EmptyClipboard</a>;
+<a name=918 href="/lxr/source/cint/lib/win32api/winfunc.h#918">918</a> 
+<a name=919 href="/lxr/source/cint/lib/win32api/winfunc.h#919">919</a> <a href="/lxr/ident?i=HANDLE">HANDLE</a> <a href="/lxr/ident?i=GetClipboardData">GetClipboardData</a>(<a href="/lxr/ident?i=UINT">UINT</a> uFormat);
+<a name=920 href="/lxr/source/cint/lib/win32api/winfunc.h#920">920</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetClipboardData">GetClipboardData</a>;
+<a name=921 href="/lxr/source/cint/lib/win32api/winfunc.h#921">921</a> 
+<a name=922 href="/lxr/source/cint/lib/win32api/winfunc.h#922">922</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=OpenClipboard">OpenClipboard</a>(<a href="/lxr/ident?i=HWND">HWND</a> hWndNewOwner);
+<a name=923 href="/lxr/source/cint/lib/win32api/winfunc.h#923">923</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=OpenClipboard">OpenClipboard</a>;
+<a name=924 href="/lxr/source/cint/lib/win32api/winfunc.h#924">924</a> 
+<a name=925 href="/lxr/source/cint/lib/win32api/winfunc.h#925">925</a> <b><i>/***********************************************************************</i></b>
+<a name=926 href="/lxr/source/cint/lib/win32api/winfunc.h#926">926</a> <b><i>* Message Box</i></b>
+<a name=927 href="/lxr/source/cint/lib/win32api/winfunc.h#927">927</a> <b><i>***********************************************************************/</i></b>
+<a name=928 href="/lxr/source/cint/lib/win32api/winfunc.h#928">928</a> int <a href="/lxr/ident?i=MessageBox">MessageBox</a>(<a href="/lxr/ident?i=HWND">HWND</a> hWnd,LPCTSTR lpText,LPCTSTR lpCaption,<a href="/lxr/ident?i=UINT">UINT</a> uType);
+<a name=929 href="/lxr/source/cint/lib/win32api/winfunc.h#929">929</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=MessageBox">MessageBox</a>;
+<a name=930 href="/lxr/source/cint/lib/win32api/winfunc.h#930">930</a> 
+<a name=931 href="/lxr/source/cint/lib/win32api/winfunc.h#931">931</a> <b><i>/***********************************************************************</i></b>
+<a name=932 href="/lxr/source/cint/lib/win32api/winfunc.h#932">932</a> <b><i>* Common Dialog Box</i></b>
+<a name=933 href="/lxr/source/cint/lib/win32api/winfunc.h#933">933</a> <b><i>***********************************************************************/</i></b>
+<a name=934 href="/lxr/source/cint/lib/win32api/winfunc.h#934">934</a> #ifndef <a href="/lxr/ident?i=G__SYMANTEC">G__SYMANTEC</a>
+<a name=935 href="/lxr/source/cint/lib/win32api/winfunc.h#935">935</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=ChooseColor">ChooseColor</a>(<a href="/lxr/ident?i=LPCHOOSECOLOR">LPCHOOSECOLOR</a> lpcc);
+<a name=936 href="/lxr/source/cint/lib/win32api/winfunc.h#936">936</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ChooseColor">ChooseColor</a>;
+<a name=937 href="/lxr/source/cint/lib/win32api/winfunc.h#937">937</a> 
+<a name=938 href="/lxr/source/cint/lib/win32api/winfunc.h#938">938</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=ChooseFont">ChooseFont</a>(<a href="/lxr/ident?i=LPCHOOSEFONT">LPCHOOSEFONT</a> lpcf);
+<a name=939 href="/lxr/source/cint/lib/win32api/winfunc.h#939">939</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ChooseFont">ChooseFont</a>;
+<a name=940 href="/lxr/source/cint/lib/win32api/winfunc.h#940">940</a> 
+<a name=941 href="/lxr/source/cint/lib/win32api/winfunc.h#941">941</a> <a href="/lxr/ident?i=HWND">HWND</a> <a href="/lxr/ident?i=FindText">FindText</a>(<a href="/lxr/ident?i=LPFINDREPLACE">LPFINDREPLACE</a> lpfr);
+<a name=942 href="/lxr/source/cint/lib/win32api/winfunc.h#942">942</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FindText">FindText</a>;
+<a name=943 href="/lxr/source/cint/lib/win32api/winfunc.h#943">943</a> 
+<a name=944 href="/lxr/source/cint/lib/win32api/winfunc.h#944">944</a> short <a href="/lxr/ident?i=GetFileTitle">GetFileTitle</a>(LPCTSTR lpszFile,LPTSTR <a href="/lxr/ident?i=lpszTitle">lpszTitle</a>,<a href="/lxr/ident?i=WORD">WORD</a> cbBuf);
+<a name=945 href="/lxr/source/cint/lib/win32api/winfunc.h#945">945</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetFileTitle">GetFileTitle</a>;
+<a name=946 href="/lxr/source/cint/lib/win32api/winfunc.h#946">946</a> 
+<a name=947 href="/lxr/source/cint/lib/win32api/winfunc.h#947">947</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetOpenFileName">GetOpenFileName</a>(<a href="/lxr/ident?i=LPOPENFILENAME">LPOPENFILENAME</a> lpofn);
+<a name=948 href="/lxr/source/cint/lib/win32api/winfunc.h#948">948</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetOpenFileName">GetOpenFileName</a>;
+<a name=949 href="/lxr/source/cint/lib/win32api/winfunc.h#949">949</a> 
+<a name=950 href="/lxr/source/cint/lib/win32api/winfunc.h#950">950</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetSaveFileName">GetSaveFileName</a>(<a href="/lxr/ident?i=LPOPENFILENAME">LPOPENFILENAME</a> lpofn);
+<a name=951 href="/lxr/source/cint/lib/win32api/winfunc.h#951">951</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetSaveFileName">GetSaveFileName</a>;
+<a name=952 href="/lxr/source/cint/lib/win32api/winfunc.h#952">952</a> 
+<a name=953 href="/lxr/source/cint/lib/win32api/winfunc.h#953">953</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=PageSetupDlg">PageSetupDlg</a>(<a href="/lxr/ident?i=LPPAGESETUPDLG">LPPAGESETUPDLG</a> lppsd);
+<a name=954 href="/lxr/source/cint/lib/win32api/winfunc.h#954">954</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=PageSetupDlg">PageSetupDlg</a>;
+<a name=955 href="/lxr/source/cint/lib/win32api/winfunc.h#955">955</a> 
+<a name=956 href="/lxr/source/cint/lib/win32api/winfunc.h#956">956</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=PrintDlg">PrintDlg</a>(<a href="/lxr/ident?i=LPPRINTDLG">LPPRINTDLG</a> lppd);
+<a name=957 href="/lxr/source/cint/lib/win32api/winfunc.h#957">957</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=PrintDlg">PrintDlg</a>;
+<a name=958 href="/lxr/source/cint/lib/win32api/winfunc.h#958">958</a> 
+<a name=959 href="/lxr/source/cint/lib/win32api/winfunc.h#959">959</a> <a href="/lxr/ident?i=HWND">HWND</a> <a href="/lxr/ident?i=ReplaceText">ReplaceText</a>(<a href="/lxr/ident?i=LPFINDREPLACE">LPFINDREPLACE</a> lpfr);
+<a name=960 href="/lxr/source/cint/lib/win32api/winfunc.h#960">960</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ReplaceText">ReplaceText</a>;
+<a name=961 href="/lxr/source/cint/lib/win32api/winfunc.h#961">961</a> #endif
+<a name=962 href="/lxr/source/cint/lib/win32api/winfunc.h#962">962</a> 
+<a name=963 href="/lxr/source/cint/lib/win32api/winfunc.h#963">963</a> <b><i>/***********************************************************************</i></b>
+<a name=964 href="/lxr/source/cint/lib/win32api/winfunc.h#964">964</a> <b><i>* Timer</i></b>
+<a name=965 href="/lxr/source/cint/lib/win32api/winfunc.h#965">965</a> <b><i>***********************************************************************/</i></b>
+<a name=966 href="/lxr/source/cint/lib/win32api/winfunc.h#966">966</a> void <a href="/lxr/ident?i=Sleep">Sleep</a>(<a href="/lxr/ident?i=DWORD">DWORD</a> dwMilliseconds);
+<a name=967 href="/lxr/source/cint/lib/win32api/winfunc.h#967">967</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=Sleep">Sleep</a>;
+<a name=968 href="/lxr/source/cint/lib/win32api/winfunc.h#968">968</a> 
+<a name=969 href="/lxr/source/cint/lib/win32api/winfunc.h#969">969</a> <b><i>/***********************************************************************</i></b>
+<a name=970 href="/lxr/source/cint/lib/win32api/winfunc.h#970">970</a> <b><i>* Console</i></b>
+<a name=971 href="/lxr/source/cint/lib/win32api/winfunc.h#971">971</a> <b><i>***********************************************************************/</i></b>
+<a name=972 href="/lxr/source/cint/lib/win32api/winfunc.h#972">972</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=AllocConsole">AllocConsole</a>();
+<a name=973 href="/lxr/source/cint/lib/win32api/winfunc.h#973">973</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=AllocConsole">AllocConsole</a>();
+<a name=974 href="/lxr/source/cint/lib/win32api/winfunc.h#974">974</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=FreeConsole">FreeConsole</a>();
+<a name=975 href="/lxr/source/cint/lib/win32api/winfunc.h#975">975</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FreeConsole">FreeConsole</a>();
+<a name=976 href="/lxr/source/cint/lib/win32api/winfunc.h#976">976</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetConsoleTitle">SetConsoleTitle</a>(LPCTSTR <a href="/lxr/ident?i=title">title</a>);
+<a name=977 href="/lxr/source/cint/lib/win32api/winfunc.h#977">977</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetConsoleTitle">SetConsoleTitle</a>;
+<a name=978 href="/lxr/source/cint/lib/win32api/winfunc.h#978">978</a> 
+<a name=979 href="/lxr/source/cint/lib/win32api/winfunc.h#979">979</a> 
+<a name=980 href="/lxr/source/cint/lib/win32api/winfunc.h#980">980</a> <b><i>/***********************************************************************</i></b>
+<a name=981 href="/lxr/source/cint/lib/win32api/winfunc.h#981">981</a> <b><i>* Error</i></b>
+<a name=982 href="/lxr/source/cint/lib/win32api/winfunc.h#982">982</a> <b><i>***********************************************************************/</i></b>
+<a name=983 href="/lxr/source/cint/lib/win32api/winfunc.h#983">983</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=Beep">Beep</a>(<a href="/lxr/ident?i=DWORD">DWORD</a> dwFreq,<a href="/lxr/ident?i=DWORD">DWORD</a> dwDuration);
+<a name=984 href="/lxr/source/cint/lib/win32api/winfunc.h#984">984</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=Beep">Beep</a>;
+<a name=985 href="/lxr/source/cint/lib/win32api/winfunc.h#985">985</a> 
+<a name=986 href="/lxr/source/cint/lib/win32api/winfunc.h#986">986</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=ExitWindows">ExitWindows</a>(<a href="/lxr/ident?i=DWORD">DWORD</a> dwReserved,<a href="/lxr/ident?i=UINT">UINT</a> uReserved);
+<a name=987 href="/lxr/source/cint/lib/win32api/winfunc.h#987">987</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ExitWindows">ExitWindows</a>;
+<a name=988 href="/lxr/source/cint/lib/win32api/winfunc.h#988">988</a> 
+<a name=989 href="/lxr/source/cint/lib/win32api/winfunc.h#989">989</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetLastError">GetLastError</a>();
+<a name=990 href="/lxr/source/cint/lib/win32api/winfunc.h#990">990</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetLastError">GetLastError</a>;
+<a name=991 href="/lxr/source/cint/lib/win32api/winfunc.h#991">991</a> 
+<a name=992 href="/lxr/source/cint/lib/win32api/winfunc.h#992">992</a> void <a href="/lxr/ident?i=ExitProcess">ExitProcess</a>(<a href="/lxr/ident?i=UINT">UINT</a> uExitCode);
+<a name=993 href="/lxr/source/cint/lib/win32api/winfunc.h#993">993</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ExitProcess">ExitProcess</a>;
+<a name=994 href="/lxr/source/cint/lib/win32api/winfunc.h#994">994</a> 
+<a name=995 href="/lxr/source/cint/lib/win32api/winfunc.h#995">995</a> <b><i>/***********************************************************************</i></b>
+<a name=996 href="/lxr/source/cint/lib/win32api/winfunc.h#996">996</a> <b><i>* Graphics</i></b>
+<a name=997 href="/lxr/source/cint/lib/win32api/winfunc.h#997">997</a> <b><i>***********************************************************************/</i></b>
+<a name=998 href="/lxr/source/cint/lib/win32api/winfunc.h#998">998</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> class HDC__;
+<a name=999 href="/lxr/source/cint/lib/win32api/winfunc.h#999">999</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> typedef <a href="/lxr/ident?i=HDC">HDC</a>;
+<a name=1000 href="/lxr/source/cint/lib/win32api/winfunc.h#1000">1000</a> 
+<a name=1001 href="/lxr/source/cint/lib/win32api/winfunc.h#1001">1001</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=AngleArc">AngleArc</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, <a href="/lxr/ident?i=DWORD">DWORD</a>, FLOAT, FLOAT);
+<a name=1002 href="/lxr/source/cint/lib/win32api/winfunc.h#1002">1002</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=AngleArc">AngleArc</a>;
+<a name=1003 href="/lxr/source/cint/lib/win32api/winfunc.h#1003">1003</a> 
+<a name=1004 href="/lxr/source/cint/lib/win32api/winfunc.h#1004">1004</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=PolyPolyline">PolyPolyline</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> <a href="/lxr/ident?i=POINT">POINT</a> *, <b><i>/* CONST */</i></b> <a href="/lxr/ident?i=DWORD">DWORD</a> *, <a href="/lxr/ident?i=DWORD">DWORD</a>);
+<a name=1005 href="/lxr/source/cint/lib/win32api/winfunc.h#1005">1005</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=PolyPolyline">PolyPolyline</a>;
+<a name=1006 href="/lxr/source/cint/lib/win32api/winfunc.h#1006">1006</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=GetWorldTransform">GetWorldTransform</a>(<a href="/lxr/ident?i=HDC">HDC</a>, LPXFORM);
+<a name=1007 href="/lxr/source/cint/lib/win32api/winfunc.h#1007">1007</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetWorldTransform">GetWorldTransform</a>;
+<a name=1008 href="/lxr/source/cint/lib/win32api/winfunc.h#1008">1008</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=SetWorldTransform">SetWorldTransform</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> XFORM *);
+<a name=1009 href="/lxr/source/cint/lib/win32api/winfunc.h#1009">1009</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetWorldTransform">SetWorldTransform</a>;
+<a name=1010 href="/lxr/source/cint/lib/win32api/winfunc.h#1010">1010</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=ModifyWorldTransform">ModifyWorldTransform</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> XFORM *, <a href="/lxr/ident?i=DWORD">DWORD</a>);
+<a name=1011 href="/lxr/source/cint/lib/win32api/winfunc.h#1011">1011</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ModifyWorldTransform">ModifyWorldTransform</a>;
+<a name=1012 href="/lxr/source/cint/lib/win32api/winfunc.h#1012">1012</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=CombineTransform">CombineTransform</a>(LPXFORM, <b><i>/* CONST */</i></b> XFORM *, <b><i>/* CONST */</i></b> XFORM *);
+<a name=1013 href="/lxr/source/cint/lib/win32api/winfunc.h#1013">1013</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CombineTransform">CombineTransform</a>;
+<a name=1014 href="/lxr/source/cint/lib/win32api/winfunc.h#1014">1014</a> HBITMAP <a href="/lxr/ident?i=CreateDIBSection">CreateDIBSection</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> BITMAPINFO *, <a href="/lxr/ident?i=UINT">UINT</a>, <a href="/lxr/ident?i=VOID">VOID</a> **, <a href="/lxr/ident?i=HANDLE">HANDLE</a>, <a href="/lxr/ident?i=DWORD">DWORD</a>);
+<a name=1015 href="/lxr/source/cint/lib/win32api/winfunc.h#1015">1015</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> CreateDIBSction;
+<a name=1016 href="/lxr/source/cint/lib/win32api/winfunc.h#1016">1016</a> <a href="/lxr/ident?i=UINT">UINT</a> <a href="/lxr/ident?i=GetDIBColorTable">GetDIBColorTable</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <a href="/lxr/ident?i=UINT">UINT</a>, <a href="/lxr/ident?i=UINT">UINT</a>, RGBQUAD *);
+<a name=1017 href="/lxr/source/cint/lib/win32api/winfunc.h#1017">1017</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetDIBColorTable">GetDIBColorTable</a>;
+<a name=1018 href="/lxr/source/cint/lib/win32api/winfunc.h#1018">1018</a> <a href="/lxr/ident?i=UINT">UINT</a> <a href="/lxr/ident?i=SetDIBColorTable">SetDIBColorTable</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <a href="/lxr/ident?i=UINT">UINT</a>, <a href="/lxr/ident?i=UINT">UINT</a>, <b><i>/* CONST */</i></b> RGBQUAD *);
+<a name=1019 href="/lxr/source/cint/lib/win32api/winfunc.h#1019">1019</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetDIBColorTable">SetDIBColorTable</a>;
+<a name=1020 href="/lxr/source/cint/lib/win32api/winfunc.h#1020">1020</a> 
+<a name=1021 href="/lxr/source/cint/lib/win32api/winfunc.h#1021">1021</a> HRGN  <a href="/lxr/ident?i=CreatePolygonRgn">CreatePolygonRgn</a>(<b><i>/* CONST */</i></b> <a href="/lxr/ident?i=POINT">POINT</a> *, int, int);
+<a name=1022 href="/lxr/source/cint/lib/win32api/winfunc.h#1022">1022</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=CreatePolygonRgn">CreatePolygonRgn</a>;
+<a name=1023 href="/lxr/source/cint/lib/win32api/winfunc.h#1023">1023</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=DPtoLP">DPtoLP</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <a href="/lxr/ident?i=LPPOINT">LPPOINT</a>, int);
+<a name=1024 href="/lxr/source/cint/lib/win32api/winfunc.h#1024">1024</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=DPtoLP">DPtoLP</a>;
+<a name=1025 href="/lxr/source/cint/lib/win32api/winfunc.h#1025">1025</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=LPtoDP">LPtoDP</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <a href="/lxr/ident?i=LPPOINT">LPPOINT</a>, int);
+<a name=1026 href="/lxr/source/cint/lib/win32api/winfunc.h#1026">1026</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=LPtoDP">LPtoDP</a>;
+<a name=1027 href="/lxr/source/cint/lib/win32api/winfunc.h#1027">1027</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=Polygon">Polygon</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> <a href="/lxr/ident?i=POINT">POINT</a> *, int);
+<a name=1028 href="/lxr/source/cint/lib/win32api/winfunc.h#1028">1028</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=Polygon">Polygon</a>;
+<a name=1029 href="/lxr/source/cint/lib/win32api/winfunc.h#1029">1029</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=Polyline">Polyline</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> <a href="/lxr/ident?i=POINT">POINT</a> *, int);
+<a name=1030 href="/lxr/source/cint/lib/win32api/winfunc.h#1030">1030</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=Polyline">Polyline</a>;
+<a name=1031 href="/lxr/source/cint/lib/win32api/winfunc.h#1031">1031</a> 
+<a name=1032 href="/lxr/source/cint/lib/win32api/winfunc.h#1032">1032</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=PolyBezier">PolyBezier</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> <a href="/lxr/ident?i=POINT">POINT</a> *, <a href="/lxr/ident?i=DWORD">DWORD</a>);
+<a name=1033 href="/lxr/source/cint/lib/win32api/winfunc.h#1033">1033</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=PolyBezier">PolyBezier</a>;
+<a name=1034 href="/lxr/source/cint/lib/win32api/winfunc.h#1034">1034</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=PolyBezierTo">PolyBezierTo</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> <a href="/lxr/ident?i=POINT">POINT</a> *, <a href="/lxr/ident?i=DWORD">DWORD</a>);
+<a name=1035 href="/lxr/source/cint/lib/win32api/winfunc.h#1035">1035</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=PolyBezierTo">PolyBezierTo</a>;
+<a name=1036 href="/lxr/source/cint/lib/win32api/winfunc.h#1036">1036</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=PolylineTo">PolylineTo</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <b><i>/* CONST */</i></b> <a href="/lxr/ident?i=POINT">POINT</a> *, <a href="/lxr/ident?i=DWORD">DWORD</a>);
+<a name=1037 href="/lxr/source/cint/lib/win32api/winfunc.h#1037">1037</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=PolylineTo">PolylineTo</a>;
+<a name=1038 href="/lxr/source/cint/lib/win32api/winfunc.h#1038">1038</a> 
+<a name=1039 href="/lxr/source/cint/lib/win32api/winfunc.h#1039">1039</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=SetViewportExtEx">SetViewportExtEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, LPSIZE);
+<a name=1040 href="/lxr/source/cint/lib/win32api/winfunc.h#1040">1040</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetViewportExtEx">SetViewportExtEx</a>;
+<a name=1041 href="/lxr/source/cint/lib/win32api/winfunc.h#1041">1041</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=SetViewportOrgEx">SetViewportOrgEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, <a href="/lxr/ident?i=LPPOINT">LPPOINT</a>);
+<a name=1042 href="/lxr/source/cint/lib/win32api/winfunc.h#1042">1042</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetViewportOrgEx">SetViewportOrgEx</a>;
+<a name=1043 href="/lxr/source/cint/lib/win32api/winfunc.h#1043">1043</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=SetWindowExtEx">SetWindowExtEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, LPSIZE);
+<a name=1044 href="/lxr/source/cint/lib/win32api/winfunc.h#1044">1044</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetWindowExtEx">SetWindowExtEx</a>;
+<a name=1045 href="/lxr/source/cint/lib/win32api/winfunc.h#1045">1045</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=SetWindowOrgEx">SetWindowOrgEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, <a href="/lxr/ident?i=LPPOINT">LPPOINT</a>);
+<a name=1046 href="/lxr/source/cint/lib/win32api/winfunc.h#1046">1046</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetWindowOrgEx">SetWindowOrgEx</a>;
+<a name=1047 href="/lxr/source/cint/lib/win32api/winfunc.h#1047">1047</a> 
+<a name=1048 href="/lxr/source/cint/lib/win32api/winfunc.h#1048">1048</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=OffsetViewportOrgEx">OffsetViewportOrgEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, <a href="/lxr/ident?i=LPPOINT">LPPOINT</a>);
+<a name=1049 href="/lxr/source/cint/lib/win32api/winfunc.h#1049">1049</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=OffsetViewportOrgEx">OffsetViewportOrgEx</a>;
+<a name=1050 href="/lxr/source/cint/lib/win32api/winfunc.h#1050">1050</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=OffsetWindowOrgEx">OffsetWindowOrgEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, <a href="/lxr/ident?i=LPPOINT">LPPOINT</a>);
+<a name=1051 href="/lxr/source/cint/lib/win32api/winfunc.h#1051">1051</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=OffsetWindowOrgEx">OffsetWindowOrgEx</a>;
+<a name=1052 href="/lxr/source/cint/lib/win32api/winfunc.h#1052">1052</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=ScaleViewportExtEx">ScaleViewportExtEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, int, int, LPSIZE);
+<a name=1053 href="/lxr/source/cint/lib/win32api/winfunc.h#1053">1053</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ScaleViewportExtEx">ScaleViewportExtEx</a>;
+<a name=1054 href="/lxr/source/cint/lib/win32api/winfunc.h#1054">1054</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=ScaleWindowExtEx">ScaleWindowExtEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, int, int, LPSIZE);
+<a name=1055 href="/lxr/source/cint/lib/win32api/winfunc.h#1055">1055</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=ScaleWindowExtEx">ScaleWindowExtEx</a>;
+<a name=1056 href="/lxr/source/cint/lib/win32api/winfunc.h#1056">1056</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=SetBitmapDimensionEx">SetBitmapDimensionEx</a>(HBITMAP, int, int, LPSIZE);
+<a name=1057 href="/lxr/source/cint/lib/win32api/winfunc.h#1057">1057</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetBitmapDimensionEx">SetBitmapDimensionEx</a>;
+<a name=1058 href="/lxr/source/cint/lib/win32api/winfunc.h#1058">1058</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=SetBrushOrgEx">SetBrushOrgEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, int, <a href="/lxr/ident?i=LPPOINT">LPPOINT</a>);
+<a name=1059 href="/lxr/source/cint/lib/win32api/winfunc.h#1059">1059</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=SetBrushOrgEx">SetBrushOrgEx</a>;
+<a name=1060 href="/lxr/source/cint/lib/win32api/winfunc.h#1060">1060</a> 
+<a name=1061 href="/lxr/source/cint/lib/win32api/winfunc.h#1061">1061</a> int   <a href="/lxr/ident?i=GetTextFace">GetTextFace</a>(<a href="/lxr/ident?i=HDC">HDC</a>, int, LPSTR);
+<a name=1062 href="/lxr/source/cint/lib/win32api/winfunc.h#1062">1062</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetTextFace">GetTextFace</a>;
+<a name=1063 href="/lxr/source/cint/lib/win32api/winfunc.h#1063">1063</a> 
+<a name=1064 href="/lxr/source/cint/lib/win32api/winfunc.h#1064">1064</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GetKerningPairs">GetKerningPairs</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <a href="/lxr/ident?i=DWORD">DWORD</a>, LPKERNINGPAIR);
+<a name=1065 href="/lxr/source/cint/lib/win32api/winfunc.h#1065">1065</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetKerningPairs">GetKerningPairs</a>;
+<a name=1066 href="/lxr/source/cint/lib/win32api/winfunc.h#1066">1066</a> 
+<a name=1067 href="/lxr/source/cint/lib/win32api/winfunc.h#1067">1067</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=GetDCOrgEx">GetDCOrgEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>,<a href="/lxr/ident?i=LPPOINT">LPPOINT</a>);
+<a name=1068 href="/lxr/source/cint/lib/win32api/winfunc.h#1068">1068</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GetDCOrgEx">GetDCOrgEx</a>;
+<a name=1069 href="/lxr/source/cint/lib/win32api/winfunc.h#1069">1069</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=FixBrushOrgEx">FixBrushOrgEx</a>(<a href="/lxr/ident?i=HDC">HDC</a>,int,int,<a href="/lxr/ident?i=LPPOINT">LPPOINT</a>);
+<a name=1070 href="/lxr/source/cint/lib/win32api/winfunc.h#1070">1070</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=FixBrushOrgEx">FixBrushOrgEx</a>;
+<a name=1071 href="/lxr/source/cint/lib/win32api/winfunc.h#1071">1071</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=UnrealizeObject">UnrealizeObject</a>(HGDIOBJ);
+<a name=1072 href="/lxr/source/cint/lib/win32api/winfunc.h#1072">1072</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=UnrealizeObject">UnrealizeObject</a>;
+<a name=1073 href="/lxr/source/cint/lib/win32api/winfunc.h#1073">1073</a> 
+<a name=1074 href="/lxr/source/cint/lib/win32api/winfunc.h#1074">1074</a> <a href="/lxr/ident?i=BOOL">BOOL</a>  <a href="/lxr/ident?i=GdiFlush">GdiFlush</a>();
+<a name=1075 href="/lxr/source/cint/lib/win32api/winfunc.h#1075">1075</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GdiFlush">GdiFlush</a>;
+<a name=1076 href="/lxr/source/cint/lib/win32api/winfunc.h#1076">1076</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GdiSetBatchLimit">GdiSetBatchLimit</a>(<a href="/lxr/ident?i=DWORD">DWORD</a>);
+<a name=1077 href="/lxr/source/cint/lib/win32api/winfunc.h#1077">1077</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GdiSetBatchLimit">GdiSetBatchLimit</a>;
+<a name=1078 href="/lxr/source/cint/lib/win32api/winfunc.h#1078">1078</a> <a href="/lxr/ident?i=DWORD">DWORD</a> <a href="/lxr/ident?i=GdiGetBatchLimit">GdiGetBatchLimit</a>();
+<a name=1079 href="/lxr/source/cint/lib/win32api/winfunc.h#1079">1079</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=GdiGetBatchLimit">GdiGetBatchLimit</a>;
+<a name=1080 href="/lxr/source/cint/lib/win32api/winfunc.h#1080">1080</a> 
+<a name=1081 href="/lxr/source/cint/lib/win32api/winfunc.h#1081">1081</a> <a href="/lxr/ident?i=BOOL">BOOL</a> <a href="/lxr/ident?i=DrawState">DrawState</a>(<a href="/lxr/ident?i=HDC">HDC</a>, <a href="/lxr/ident?i=HBRUSH">HBRUSH</a>, DRAWSTATEPROC, LPARAM, WPARAM, int, int, int, int, <a href="/lxr/ident?i=UINT">UINT</a>);
+<a name=1082 href="/lxr/source/cint/lib/win32api/winfunc.h#1082">1082</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=DrawState">DrawState</a>;
+<a name=1083 href="/lxr/source/cint/lib/win32api/winfunc.h#1083">1083</a> 
+<a name=1084 href="/lxr/source/cint/lib/win32api/winfunc.h#1084">1084</a> <b><i>/* Kazu Hata's request */</i></b>
+<a name=1085 href="/lxr/source/cint/lib/win32api/winfunc.h#1085">1085</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> CreatePen;
+<a name=1086 href="/lxr/source/cint/lib/win32api/winfunc.h#1086">1086</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> SelectObject;
+<a name=1087 href="/lxr/source/cint/lib/win32api/winfunc.h#1087">1087</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> CreateHatchBrush; 
+<a name=1088 href="/lxr/source/cint/lib/win32api/winfunc.h#1088">1088</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> Rectangle;
+<a name=1089 href="/lxr/source/cint/lib/win32api/winfunc.h#1089">1089</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> DeleteObject;
+<a name=1090 href="/lxr/source/cint/lib/win32api/winfunc.h#1090">1090</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> GetStockObject;
+<a name=1091 href="/lxr/source/cint/lib/win32api/winfunc.h#1091">1091</a> 
+<a name=1092 href="/lxr/source/cint/lib/win32api/winfunc.h#1092">1092</a> char* <a href="/lxr/ident?i=strupr">strupr</a>(char*);
+<a name=1093 href="/lxr/source/cint/lib/win32api/winfunc.h#1093">1093</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=strupr">strupr</a>;
+<a name=1094 href="/lxr/source/cint/lib/win32api/winfunc.h#1094">1094</a> char* <a href="/lxr/ident?i=strlwr">strlwr</a>(char*);
+<a name=1095 href="/lxr/source/cint/lib/win32api/winfunc.h#1095">1095</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> <a href="/lxr/ident?i=func">func</a> <a href="/lxr/ident?i=strlwr">strlwr</a>;
+<a name=1096 href="/lxr/source/cint/lib/win32api/winfunc.h#1096">1096</a> 
+<a name=1097 href="/lxr/source/cint/lib/win32api/winfunc.h#1097">1097</a> <a href="/lxr/ident?i=COLORREF">COLORREF</a> <a href="/lxr/ident?i=RGB">RGB</a>(char <a href="/lxr/ident?i=a">a</a>,char <a href="/lxr/ident?i=b">b</a>,char <a href="/lxr/ident?i=c">c</a>);
+<a name=1098 href="/lxr/source/cint/lib/win32api/winfunc.h#1098">1098</a> #pragma <a href="/lxr/ident?i=link">link</a> <a href="/lxr/ident?i=C">C</a> MACRO <a href="/lxr/ident?i=RGB">RGB</a>;
+<a name=1099 href="/lxr/source/cint/lib/win32api/winfunc.h#1099">1099</a> 
+<a name=1100 href="/lxr/source/cint/lib/win32api/winfunc.h#1100">1100</a> 
+<a name=1101 href="/lxr/source/cint/lib/win32api/winfunc.h#1101">1101</a> 
+<a name=1102 href="/lxr/source/cint/lib/win32api/winfunc.h#1102">1102</a> 
+<a name=1103 href="/lxr/source/cint/lib/win32api/winfunc.h#1103">1103</a> <b><i>/**********************************************************************/</i></b>
+<a name=1104 href="/lxr/source/cint/lib/win32api/winfunc.h#1104">1104</a> #endif <b><i>// __MAKECINT__</i></b>
+<a name=1105 href="/lxr/source/cint/lib/win32api/winfunc.h#1105">1105</a> <b><i></i></b>
+<a name=1106 href="/lxr/source/cint/lib/win32api/winfunc.h#1106">1106</a> #endif <b><i>// G__WINFUNC_H</i></b>
+<a name=1107 href="/lxr/source/cint/lib/win32api/winfunc.h#1107">1107</a> <b><i></i></b>
+<a name=1108 href="/lxr/source/cint/lib/win32api/winfunc.h#1108">1108</a> 
+<a name=1109 href="/lxr/source/cint/lib/win32api/winfunc.h#1109">1109</a> </pre><P>
+   This page was automatically generated by 
+   <A HREF="/mozilla/source/webtools/lxr/"> LXR</A>.
+</html>

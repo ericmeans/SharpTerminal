@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpTerminal", "SharpTerminal\SharpTerminal.csproj", "{301E10A4-CBDC-4B4D-B4F7-05083ADFF35C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialComm", "SerialComm\SerialComm.csproj", "{EF4C5E98-F61D-42F9-8D3C-9EB0BECC5502}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{301E10A4-CBDC-4B4D-B4F7-05083ADFF35C}.Debug.ActiveCfg = Debug|.NET
+		{301E10A4-CBDC-4B4D-B4F7-05083ADFF35C}.Debug.Build.0 = Debug|.NET
+		{301E10A4-CBDC-4B4D-B4F7-05083ADFF35C}.Release.ActiveCfg = Release|.NET
+		{301E10A4-CBDC-4B4D-B4F7-05083ADFF35C}.Release.Build.0 = Release|.NET
+		{EF4C5E98-F61D-42F9-8D3C-9EB0BECC5502}.Debug.ActiveCfg = Debug|.NET
+		{EF4C5E98-F61D-42F9-8D3C-9EB0BECC5502}.Debug.Build.0 = Debug|.NET
+		{EF4C5E98-F61D-42F9-8D3C-9EB0BECC5502}.Release.ActiveCfg = Release|.NET
+		{EF4C5E98-F61D-42F9-8D3C-9EB0BECC5502}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
